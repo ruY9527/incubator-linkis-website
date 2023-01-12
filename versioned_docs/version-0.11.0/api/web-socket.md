@@ -9,7 +9,7 @@ sidebar_position: 3
 
 Linkis defines a set of its own interface norms when interacting at the back and back end.
 
-If you are interested in interface specifications, please click here[to view interface norms](/community/development-specification/api)
+If you are interested in interface specifications, please click here[to view interface norms](/docs/1.3.1/development/development-specification/api)
 
 ## 2 WebSocket Interface Summary
 
@@ -93,7 +93,7 @@ Requested task is to submit user's assignment to Linkis for execution interface
  "status": 0,
  "message": "The request was executed successfully",
  "data": {
-   "execID": "030418IDEhivebdpdwc010004:10087IDE_johnnwang_21",
+   "execID": "030418IDEhivelocalhost010004:10087IDE_johnnwang_21",
    "taskID": "123"  
  }
 }

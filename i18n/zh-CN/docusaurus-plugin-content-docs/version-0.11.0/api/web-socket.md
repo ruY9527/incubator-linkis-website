@@ -9,7 +9,7 @@ sidebar_position: 3
 
 Linkis在前后端进行交互的时候，定义了一套自己的接口规范。
 
-如果您对接口规范感兴趣，请点击这里[查看接口规范](/community/development-specification/api)
+如果您对接口规范感兴趣，请点击这里[查看接口规范](/docs/1.3.1/development/development-specification/api)
 
 ## 2 WebSocket接口汇总
 
@@ -93,7 +93,7 @@ Linkis在前后端进行交互的时候，定义了一套自己的接口规范�
  "status": 0,
  "message": "请求执行成功",
  "data": {
-   "execID": "030418IDEhivebdpdwc010004:10087IDE_johnnwang_21",
+   "execID": "030418IDEhivelocalhost010004:10087IDE_johnnwang_21",
    "taskID": "123"  
  }
 }

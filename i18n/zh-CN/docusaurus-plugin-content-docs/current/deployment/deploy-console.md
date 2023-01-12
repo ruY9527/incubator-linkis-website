@@ -1,6 +1,6 @@
 ---
 title: 管理台部署
-sidebar_position: 1.2
+sidebar_position: 3
 ---
 > web端是使用nginx作为静态资源服务器的，访问请求流程是:`Linkis管理台请求->nginx ip:port->linkis-gateway ip:port-> 其他服务`
 
@@ -16,7 +16,6 @@ Linkis 提供了单独的前端管理台功能，提供了展示历史任务的�
 解压后目录为：
 ```
 ├── config.sh
-├── DISCLAIMER
 ├── dist
 ├── install.sh
 ├── LICENSE
@@ -161,14 +160,12 @@ sudo systemctl restart nginx
 
 浏览器访问`http://linkis_ipaddr:linkis_port` 其中linkis_port为config.sh里面配置的端口，linkis_ipaddr为安装机器的IP
 
-用户名/密码在`{LINKIS_HOME}/conf/linkis-mg-gateway.properties`中查看
+用户名/密码在`${LINKIS_HOME}/conf/linkis-mg-gateway.properties`中查看
 ```shell script
 wds.linkis.admin.user= #用户
 wds.linkis.admin.password= #密码
 
 ```
-管理台使用指引见[使用手册](../user-guide/console-manual.md)
-
 
 ## 4 注意事项 
 

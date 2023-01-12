@@ -81,7 +81,7 @@ MYSQL_PASSWORD=xxxxx
 
 # 提供 Hive 元数据数据库的 DB 信息，如果不涉及hive引擎（或则只是简单试用），可以不配置 
 #主要是配合scriptis一起使用，如果不配置，会默认尝试通过$HIVE_CONF_DIR 中的配置文件获取
-HIVE_META_URL="jdbc:mysql://10.10.10.10:3306/hive_meta_demo?useUnicode=true&amp;characterEncoding=UTF-8" 
+HIVE_META_URL="jdbc:mysql://127.0.0.1:3306/hive_meta_demo?useUnicode=true&amp;characterEncoding=UTF-8" 
 HIVE_META_USER=demo   # HiveMeta元数据库的用户
 HIVE_META_PASSWORD=demo123    # HiveMeta元数据库的密码
 ```
@@ -157,7 +157,7 @@ SPARK_CONF_DIR=/appcom/config/spark-config
 #### LDAP 登录配置(可选)
 
 :::caution 注意
-默认是使用静态用户和密码,静态用户即部署用户，静态密码会在执行部署是随机生成一个密码串，存储于`{LINKIS_HOME}/conf/linkis-mg-gateway.properties`(>=1.0.3版本)
+默认是使用静态用户和密码,静态用户即部署用户，静态密码会在执行部署是随机生成一个密码串，存储于`${LINKIS_HOME}/conf/linkis-mg-gateway.properties`(>=1.0.3版本)
 :::
 
 
@@ -239,8 +239,8 @@ Your default account password is [hadoop/5e8e312b4]`
 
 拷贝mysql 驱动包至lib包下 
 ```
-cp mysql-connector-java-5.1.49.jar  {LINKIS_HOME}/lib/linkis-spring-cloud-services/linkis-mg-gateway/
-cp mysql-connector-java-5.1.49.jar  {LINKIS_HOME}/lib/linkis-commons/public-module/
+cp mysql-connector-java-5.1.49.jar  ${LINKIS_HOME}/lib/linkis-spring-cloud-services/linkis-mg-gateway/
+cp mysql-connector-java-5.1.49.jar  ${LINKIS_HOME}/lib/linkis-commons/public-module/
 ```
 
 ### 3.3 配置调整（可选）
@@ -382,7 +382,7 @@ nginx的日志文件在 `/var/log/nginx/access.log` 和`/var/log/nginx/error.log
 ### 4.4 登录管理台
 
 浏览器登陆 `http://xx.xx.xx.xx:8188/#/login`
-用户名/密码在`{LINKIS_HOME}/conf/linkis-mg-gateway.properties`中查看
+用户名/密码在`${LINKIS_HOME}/conf/linkis-mg-gateway.properties`中查看
 ```shell script
 wds.linkis.admin.user= #用户
 wds.linkis.admin.password= #密码
@@ -542,11 +542,11 @@ hdfs dfs -chown hadoop:hadoop   /apps-data
 ### 8.3 登陆密码问题
 
 linkis默认是使用静态用户和密码,静态用户即部署用户，静态密码会在执行部署是随机生成一个密码串，存储于
-`{LINKIS_HOME}/conf/linkis-mg-gateway.properties`(>=1.0.3版本)
+`${LINKIS_HOME}/conf/linkis-mg-gateway.properties`(>=1.0.3版本)
 
 ### 8.4 版本兼容性问题
 
-linkis默认支持的引擎，与dss兼容关系可以查看[此文档](https://github.com/apache/incubator-linkis/blob/master/README.md)
+linkis默认支持的引擎，与dss兼容关系可以查看[此文档](https://github.com/apache/linkis/blob/master/README.md)
 
 
 ### 8.5 如何定位服务端异常日志
@@ -653,7 +653,7 @@ Token-User:hadoop
 ## 9. 相关的资料如何获取
 linkis官网文档正在不断的完善,可以在本官网查看/关键字搜索相关文档。  
 相关博文链接
-- Linkis的技术博文集  https://github.com/apache/incubator-linkis/issues/1233
+- Linkis的技术博文集  https://github.com/apache/linkis/issues/1233
 - 公众号技术博文https://mp.weixin.qq.com/mp/homepage?__biz=MzI4MDkxNzUxMg==&hid=1&sn=088cbf2bbed1c80d003c5865bc92ace8&scene=18
 - 官网文档 https://linkis.apache.org/zh-CN/docs/latest/introduction
 - bili技术分享视频 https://space.bilibili.com/598542776?spm_id_from=333.788.b_765f7570696e666f.2  

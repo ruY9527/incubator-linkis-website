@@ -18,7 +18,7 @@ Linkis supports specifying the user who submits and executes. The linkis main pr
 
 Take hadoop user as an example:
 
-First check whether there is already a hadoop user in the system. If it already exists, you can directly authorize it; if not, create a user first, and then authorize.
+First check whether there is already a hadoop user in the system. If it already exists, you can directly authorize it, if not, create a user first, and then authorize.
 
 Check if a hadoop user already exists
 ```shell script
@@ -57,7 +57,6 @@ The unzipped directory structure is as follows
 -rw-r--r-- 1 hadoop hadoop 531847342 Feb 21 10:10 apache-linkis-1.0.3-incubating-bin.tar.gz
 drwxrwxr-x 2 hadoop hadoop 4096 Feb 21 10:13 bin //Script to perform environment check and install
 drwxrwxr-x 2 hadoop hadoop 4096 Feb 21 10:13 deploy-config // Environment configuration information such as DB that depends on deployment
--rw-r--r-- 1 hadoop hadoop 1707 Jan 22 2020 DISCLAIMER-WIP
 -rw-r--r-- 1 hadoop hadoop 66058 Jan 22 2020 LICENSE
 drwxrwxr-x 2 hadoop hadoop 16384 Feb 21 10:13 licenses
 drwxrwxr-x 7 hadoop hadoop 4096 Feb 21 10:13 linkis-package // The actual package, including lib/service startup script tool/db initialization script/microservice configuration file, etc.
@@ -157,7 +156,7 @@ SPARK_CONF_DIR=/appcom/config/spark-config
 #### LDAP login configuration (optional)
 
 :::caution note
-The default is to use a static user and password. The static user is the deployment user. The static password will generate a random password string during deployment and store it in `{LINKIS_HOME}/conf/linkis-mg-gateway.properties`(>=1.0.3 Version)
+The default is to use a static user and password. The static user is the deployment user. The static password will generate a random password string during deployment and store it in `${LINKIS_HOME}/conf/linkis-mg-gateway.properties`(>=1.0.3 Version)
 :::
 
 
@@ -245,8 +244,8 @@ To download the mysql driver, take version 5.1.49 as an example: [download link]
 
 Copy the mysql driver package to the lib package
 ````
-cp mysql-connector-java-5.1.49.jar {LINKIS_HOME}/lib/linkis-spring-cloud-services/linkis-mg-gateway/
-cp mysql-connector-java-5.1.49.jar {LINKIS_HOME}/lib/linkis-commons/public-module/
+cp mysql-connector-java-5.1.49.jar ${LINKIS_HOME}/lib/linkis-spring-cloud-services/linkis-mg-gateway/
+cp mysql-connector-java-5.1.49.jar ${LINKIS_HOME}/lib/linkis-commons/public-module/
 ````
 
 ### 3.3 Configuration Adjustment (Optional)
@@ -383,13 +382,12 @@ If you need to modify the port or static resource directory, etc., please modify
 ### 4.4 Login to the console
 
 Browser login `http://xx.xx.xx.xx:8188/#/login`
-Username/password can be found in `{LINKIS_HOME}/conf/linkis-mg-gateway.properties`
+Username/password can be found in `${LINKIS_HOME}/conf/linkis-mg-gateway.properties`
 ```shell script
 wds.linkis.admin.user= #User
 wds.linkis.admin.password= #Password
 
 ````
-Refer to the [User Manual](../user-guide/console-manual.md) for the usage guide of the console
 
 ## 5. Verify basic functionality
 >Verify the corresponding engine tasks according to actual needs
@@ -411,9 +409,7 @@ sh bin/linkis-cli -submitUser hadoop -engineType python-python2 -codeType python
 If the verification fails, please refer to [Step 8] for troubleshooting
 
 ## 6 Installation of development tool IDE (Scriptis) (optional)
->After installing the Scripti tool, it can support writing SQL, Pyspark, HiveQL and other scripts online on the web page
-
-For detailed instructions, see [Installation and Deployment of Tool Scriptis](./install-scriptis)
+After installing the Scripti tool, it can support writing SQL, Pyspark, HiveQL and other scripts online on the web page,For detailed instructions, see [Installation and Deployment of Tool Scriptis](integrated/install-scriptis)
 
 ## 7. Supported Engines
 
@@ -479,7 +475,7 @@ select * from linkis_cg_engine_conn_plugin_bml_resources
 
 After logging in, check whether the yarn queue resources can be displayed normally (click the button in the lower right corner of the page) (the front end needs to be installed first)
 Normally as shown below:
-![yarn-normal](https://user-images.githubusercontent.com/7869972/159955494-2f305a38-a3d6-4798-83aa-58cde23bc436.png)
+![yarn-normal](images/yarn-normal.png)
 
 If it cannot be displayed: You can adjust it according to the following guidelines
 
@@ -523,7 +519,7 @@ select * from linkis_cg_engine_conn_plugin_bml_resources
 ````
 
 The normal is as follows:
-![bml](https://user-images.githubusercontent.com/29391030/156343249-9f6dca8f-4e0d-438b-995f-4f469270a22d.png)
+![bml](images/bml.png)
 
 Check whether the material record of the engine exists (if there is an update, check whether the update time is correct).
 
@@ -543,11 +539,11 @@ hdfs dfs -chown hadoop:hadoop/apps-data
 ### 8.3 Login password problem
 
 By default, linkis uses a static user and password. The static user is the deployment user. The static password will randomly generate a password string during deployment and store it in
-`{LINKIS_HOME}/conf/linkis-mg-gateway.properties` (>=1.0.3 version)
+`${LINKIS_HOME}/conf/linkis-mg-gateway.properties` (>=1.0.3 version)
 
 ### 8.4 version compatibility issues
 
-The engine supported by linkis by default, the compatibility with dss can be viewed [this document](https://github.com/apache/incubator-linkis/blob/master/README.md)
+The engine supported by linkis by default, the compatibility with dss can be viewed [this document](https://github.com/apache/linkis/blob/master/README.md)
 
 
 ### 8.5 How to locate the server exception log
@@ -564,7 +560,7 @@ less log/* |grep -5n exception (or less log/* |grep -5n ERROR)
 ** step1: Find the startup deployment directory of the engine **
 
 - Method 1: If it is displayed in the execution log, you can view it on the management console as shown below:
-![engine-log](https://user-images.githubusercontent.com/29391030/156343802-9d47fa98-dc70-4206-b07f-df439b291028.png)
+  ![engine-log](images/engine-log.png)
 - Method 2: If it is not found in method 1, you can find the parameter `wds.linkis.engineconn.root.dir` configured in `conf/linkis-cg-engineconnmanager.properties`, which is the directory where the engine is started and deployed. Subdirectories are segregated by the user executing the engine
 
 ```shell script
@@ -627,7 +623,7 @@ For details, please refer to the CDH adaptation blog post
 - Method 1 can enable [Login-Free Mode Guide] (/docs/latest/api/login-api/#2 Login-Free Configuration)
 - In method 2 postman, the request header brings the cookie value of the successful login
   The cookie value can be obtained after successful login on the browser side
-  ![bml](https://user-images.githubusercontent.com/7869972/157619718-3afb480f-6087-4d5c-9a77-5e75c8cb4a3c.png)
+  ![bml](images/bml-cookie.png)
 
 ```shell script
 Cookie: bdp-user-ticket-id=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -646,15 +642,14 @@ First, follow the above steps to check whether the service/environment, etc. are
 Troubleshoot basic problems according to some of the scenarios listed above
 [QA documentation](https://docs.qq.com/doc/DSGZhdnpMV3lTUUxq) Find out if there is a solution, link: https://docs.qq.com/doc/DSGZhdnpMV3lTUUxq
 See if you can find a solution by searching the content in the issue
-![issues](https://user-images.githubusercontent.com/29391030/156343419-81cc25e0-aa94-4c06-871c-bb036eb6d4ff.png)
+![issues](images/issues.png)   
 Through the official website document search, for some problems, you can search for keywords through the official website, such as searching for "deployment". (If 404 appears, please refresh your browser)
-![search](https://user-images.githubusercontent.com/29391030/156343459-7911bd05-4d8d-4a7b-b9f8-35c152d52c41.png)
-
+![search](images/search.png)
 
 ## 9. How to obtain relevant information
 Linkis official website documents are constantly improving, you can view/keyword search related documents on this official website.
 Related blog post links
-- Linkis technical blog collection https://github.com/apache/incubator-linkis/issues/1233
+- Linkis technical blog collection https://github.com/apache/linkis/issues/1233
 - Technical blog post on the official account https://mp.weixin.qq.com/mp/homepage?__biz=MzI4MDkxNzUxMg==&hid=1&sn=088cbf2bbed1c80d003c5865bc92ace8&scene=18
 - Official website documentation https://linkis.apache.org/docs/latest/introduction
 - bili technology sharing video https://space.bilibili.com/598542776?spm_id_from=333.788.b_765f7570696e666f.2

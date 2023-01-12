@@ -9,7 +9,7 @@ sidebar_position: 2
 
 Linkis defines its own set of interface specifications when interacting between the front and back ends.
 
-If you are interested in the interface specification, please click here [view interface specification](/community/development-specification/api)
+If you are interested in the interface specification, please click here [view interface specification](/docs/1.3.1/development/development-specification/api)
 
 ## 2 HTTP interface summary
 
@@ -78,7 +78,7 @@ We provide the following interfaces to facilitate users to quickly submit execut
  "status": 0,
  "message": "Request executed successfully",
  "data": {
-   "execID": "030418IDEhivebdpdwc010004:10087IDE_johnnwang_21",
+   "execID": "030418IDEhivelocalhost010004:10087IDE_johnnwang_21",
    "taskID": "123"
  }
 }

@@ -1,11 +1,11 @@
 ---
 title: 引擎的安装
-sidebar_position: 4.0
+sidebar_position: 4
 ---
 
 > 本文主要介绍对于官方安装包中，未包含的引擎物料(jdbc/sqoop/flink等)/或则自定义实现的新引擎，如何进行安装部署，以支持对应的任务
 
-## 1 引擎插件目录结构 
+## 1. 引擎插件目录结构 
 
 Linkis的引擎物料包安装目录为`${LINKIS_HOME}/lib/linkis-engineconn-plugins`，目录结构如下:
 
@@ -177,6 +177,6 @@ select *  from linkis_cg_engine_conn_plugin_bml_resources
 ```
 
 正常如下： 
-![bml](https://user-images.githubusercontent.com/29391030/156343249-9f6dca8f-4e0d-438b-995f-4f469270a22d.png)
+![bml](images/bml.png)
 
 查看引擎的物料记录是否存在(如果有更新,查看更新时间是否正确)。

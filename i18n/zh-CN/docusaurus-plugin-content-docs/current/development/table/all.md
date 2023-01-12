@@ -35,6 +35,14 @@ sidebar_position: 1
 | 2 | hadoop-LINKISCLI,hive-2.3.3 | hadoop | bdpdev01dss02:20903 | bdpdev01dss02:9102 | 63ea31dc-65b1-42c4-8963-5fe4468f0ae0 | ShuttingDown | hadoop/20221025/hive/63ea31dc-65b1-42c4-8963-5fe4468f0ae0/logs | 1 | {"instance":1,"memory":"1024.0 MB","cpu":1} | 1 | {"instance":1,"memory":"1024.0 MB","cpu":1} | 1 | {"instance":1,"memory":"1024.0 MB","cpu":1} | 2022-10-25 17:55:52 | 2022-10-25 17:54:36 | 2022-10-25 17:54:20 |
 | 3 | hadoop-LINKISCLI,python-python2 | hadoop | bdpdev01dss02:21320 | bdpdev01dss02:9102 | 3f8a4f73-fdbb-407e-ae1b-0b14b9d08bcf | ShuttingDown | hadoop/20221025/python/3f8a4f73-fdbb-407e-ae1b-0b14b9d08bcf/logs | 1 | {"instance":1,"memory":"1024.0 MB","cpu":1} | 1 | {"instance":1,"memory":"1024.0 MB","cpu":1} | 1 | {"instance":1,"memory":"1024.0 MB","cpu":1} | 2022-10-25 17:57:41 | 2022-10-25 17:55:55 | 2022-10-25 17:55:44 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `idx_tid` | 将`ticket_id` 列设置为普通索引 | INDEX | `ticket_id` |
+| 2 | `uniq_tid_lv` | 将`ticket_id`,`label_value`列设置为唯一索引 | UNIQUE KEY | `ticket_id`,`label_value` |
+
+
 
 ## 2. linkis_cg_engine_conn_plugin_bml_resources
 
@@ -47,9 +55,9 @@ sidebar_position: 1
 | 3 | `version` | 物料版本 | varchar(100) |  | YES |  |  |
 | 4 | `file_name` | 文件名 conf.zip/lib.zip | varchar(255) |  | YES |  |  |
 | 5 | `file_size` | 大小 byte | bigint(20) |  | NO |  | 0 |
-| 6 | `last_modified` |文件的md5值| bigint(20) |  | YES |  |  |
-| 7 | `bml_resource_id` | Owning system | varchar(100) |  | NO |  |  |
-| 8 | `bml_resource_version` | Resource owner | varchar(200) |  | NO |  |  |
+| 6 | `last_modified` |最新修改时间| bigint(20) |  | YES |  |  |
+| 7 | `bml_resource_id` | bml物料id  | varchar(100) |  | NO |  |  |
+| 8 | `bml_resource_version` | bml物料版本 | varchar(200) |  | NO |  |  |
 | 9 | `create_time` | created time | datetime |  | NO |  | CURRENT_TIMESTAMP |
 | 10 | `last_update_time` | updated time | datetime |  | NO |  | CURRENT_TIMESTAMP |
 
@@ -80,9 +88,9 @@ sidebar_position: 1
 
 | id | engine_instance | em_instance | update_time | create_time |
 | ---: | --- | --- | --- | --- |
-| 223 | bdpujes110003:10394 | bdpujes110003:9102 | 2022-11-12 23:30:09 | 2022-11-12 23:30:09 |
-| 224 | bdpujes110003:33483 | bdpujes110003:9102 | 2022-11-12 23:30:48 | 2022-11-12 23:30:48 |
-| 226 | bdpujes110003:19782 | bdpujes110003:9102 | 2022-11-13 01:48:05 | 2022-11-13 01:48:05 |
+| 223 | localhost110003:10394 | localhost110003:9102 | 2022-11-12 23:30:09 | 2022-11-12 23:30:09 |
+| 224 | localhost110003:33483 | localhost110003:9102 | 2022-11-12 23:30:48 | 2022-11-12 23:30:48 |
+| 226 | localhost110003:19782 | localhost110003:9102 | 2022-11-13 01:48:05 | 2022-11-13 01:48:05 |
 
 
 
@@ -123,6 +131,12 @@ sidebar_position: 1
 | 40 | engineType | {"engineType":"flink","version":"1.11.1"} | OPTIONAL | 2 | 2021-06-08 22:07:26 | 2021-06-08 22:07:26 |
 | 41 | combined_userCreator_engineType | {"creator":"IDE","user":"johnnwang","engineType":"spark","version":"2.4.3"} | OPTIONAL | 4 | 2021-06-08 22:07:37 | 2021-06-08 22:07:37 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_lk_lv` | 将`label_key`,`label_value` 列设置为唯一索引 | UNIQUE KEY | `label_key`,`label_value` |
+
 
 
 
@@ -145,6 +159,12 @@ sidebar_position: 1
 | 14217 | 13266 | 14218 | 2022-11-12 23:09:36 | 2022-11-12 23:09:36 |
 | 14218 | 24 | 14219 | 2022-11-12 23:30:09 | 2022-11-12 23:30:09 |
 | 14219 | 13267 | 14220 | 2022-11-12 23:30:09 | 2022-11-12 23:30:09 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_label_id` | 将`label_id` 列设置为唯一索引 | UNIQUE KEY | `label_id` |
 
 
 
@@ -170,6 +190,12 @@ sidebar_position: 1
 | 201 | 105 | bdpdev01dss02:9102 | 2022-11-15 14:54:56 | 2022-11-15 14:54:56 |
 | 202 | 23 | bdpdev01dss02:9102 | 2022-11-15 14:54:56 | 2022-11-15 14:54:56 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `idx_lid_instance` | 将`label_id`,`service_instance` 列设置为普通索引 |  INDEX | `label_id`,`service_instance` |
+
 
 
 ## 7. linkis_cg_manager_label_user
@@ -193,6 +219,13 @@ sidebar_position: 1
 | 4 | `label_id` |  | int(20) |  | YES |  |  |
 | 5 | `update_time` |  | datetime |  | YES |  | CURRENT_TIMESTAMP |
 | 6 | `create_time` |  | datetime |  | YES |  | CURRENT_TIMESTAMP |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_lvk_lid` | 将`label_value_key`,`label_id` 列设置为唯一索引 | UNIQUE KEY | `label_value_key`,`label_id` |
+
 
 
 **示例数据**
@@ -270,7 +303,7 @@ sidebar_position: 1
 | 序号 | 名称 | 描述 | 类型 | 键 | 为空 | 额外 | 默认值 |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 | 1 | `id` |  | int(11) | PRI | NO | auto_increment |  |
-| 2 | `instance` | 实例信息 bdpdws110004:9102| varchar(128) | UNI | YES |  |  |
+| 2 | `instance` | 实例信息 localhost110004:9102| varchar(128) | UNI | YES |  |  |
 | 3 | `name` | 服务名 linkis-cg-engineconnmanager/linkis-cg-engineconn | varchar(32) |  | YES |  |  |
 | 4 | `owner` |  服务实例的启动用户| varchar(32) |  | YES |  |  |
 | 5 | `mark` | //todo | varchar(32) |  | YES |  |  |
@@ -283,9 +316,15 @@ sidebar_position: 1
 
 | id | instance | name | owner | mark | update_time | create_time | updator | creator |
 | ---: | --- | --- | --- | --- | --- | --- | --- | --- |
-| 121637 | bdpdws110004:9102 | linkis-cg-engineconnmanager | hadoop | process | 2022-11-08 09:52:08 | 2022-11-08 09:52:08 | hadoop | hadoop |
-| 121640 | bdpujes110002:9102 | linkis-cg-engineconnmanager | hadoop | process | 2022-11-08 09:52:16 | 2022-11-08 09:52:16 | hadoop | hadoop |
-| 121686 | gz.xg.bdpdws110001.webank:35932 | linkis-cg-engineconn | neiljianliu | process | 2022-11-08 10:40:39 | 2022-11-08 10:40:23 | neiljianliu | neiljianliu |
+| 121637 | localhost110004:9102 | linkis-cg-engineconnmanager | hadoop | process | 2022-11-08 09:52:08 | 2022-11-08 09:52:08 | hadoop | hadoop |
+| 121640 | localhost110002:9102 | linkis-cg-engineconnmanager | hadoop | process | 2022-11-08 09:52:16 | 2022-11-08 09:52:16 | hadoop | hadoop |
+| 121686 | gz.xg.localhost110001.webank:35932 | linkis-cg-engineconn | neiljianliu | process | 2022-11-08 10:40:39 | 2022-11-08 10:40:23 | neiljianliu | neiljianliu |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_instance` | 将`instance` 列设置为唯一索引 | UNIQUE KEY | `instance` |
 
 
 
@@ -307,9 +346,9 @@ sidebar_position: 1
 
 | instance | instance_status | overload | heartbeat_msg | healthy_status | update_time | create_time |
 | --- | ---: | --- | --- | --- | --- | --- |
-| bdpdws110003:9102 | 5 | {"maxMemory":67385790464,"usedMemory":3662913536,"systemCPUUsed":null,"systemLeftMemory":63722876928} |  | {"nodeHealthy":"Healthy","msg":""} | 2022-11-16 14:29:56 | 2022-11-15 15:59:17 |
-| bdpdws110004:10781 | 1 | {"maxMemory":1073741824,"usedMemory":175014896,"systemCPUUsed":6.29,"systemLeftMemory":2746556416} | \N | {"nodeHealthy":"Healthy","msg":""} | 2022-11-16 14:30:18 | 2022-11-16 11:53:48 |
-| bdpdws110004:12845 | 1 | {"maxMemory":1073741824,"usedMemory":104839664,"systemCPUUsed":6.29,"systemLeftMemory":2800877568} | \N | {"nodeHealthy":"Healthy","msg":""} | 2022-11-16 14:30:17 | 2022-11-16 12:03:20 |
+| localhost110003:9102 | 5 | {"maxMemory":67385790464,"usedMemory":3662913536,"systemCPUUsed":null,"systemLeftMemory":63722876928} |  | {"nodeHealthy":"Healthy","msg":""} | 2022-11-16 14:29:56 | 2022-11-15 15:59:17 |
+| localhost110004:10781 | 1 | {"maxMemory":1073741824,"usedMemory":175014896,"systemCPUUsed":6.29,"systemLeftMemory":2746556416} | \N | {"nodeHealthy":"Healthy","msg":""} | 2022-11-16 14:30:18 | 2022-11-16 11:53:48 |
+| localhost110004:12845 | 1 | {"maxMemory":1073741824,"usedMemory":104839664,"systemCPUUsed":6.29,"systemLeftMemory":2800877568} | \N | {"nodeHealthy":"Healthy","msg":""} | 2022-11-16 14:30:17 | 2022-11-16 12:03:20 |
 
 
 ## 14. linkis_cg_rm_external_resource_provider
@@ -395,6 +434,14 @@ sidebar_position: 1
 | 3 | WS-AUTH | * | * | BDP | 2021-09-15 | 2021-09-15 | -1 | LINKIS |
 | 4 | dss-AUTH | * | * | BDP | 2021-09-15 | 2021-09-15 | -1 | LINKIS |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_token_name` | 将`token_name` 列设置为唯一索引 | UNIQUE KEY | `token_name` |
+
+
+
 ## 17. linkis_ps_bml_project
 
 > bml 物料管理工程项目记录 主要提供给dss 工程空间的项目列表
@@ -417,6 +464,14 @@ sidebar_position: 1
 | 2524 | metabase_test_ywz_1234 | dss | \N | jinyangrao 在bml创建的工程  | jinyangrao | 1 | 2022-11-16 09:36:58 |
 | 2523 | metabase_test_tjg_345 | dss | \N | jinyangrao 在bml创建的工程  | jinyangrao | 1 | 2022-11-16 09:11:08 |
 | 2522 | test_1114_54_copynull | dss | \N | stacyyan 在bml创建的工程  | stacyyan | 1 | 2022-11-15 10:44:27 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_name` | 将`name` 列设置为唯一索引 | UNIQUE KEY | `name` |
+
+
 
 ## 18. linkis_ps_bml_project_resource
 
@@ -461,6 +516,12 @@ sidebar_position: 1
 | 22 | 21 | jianfuzhang | 7 | jianfuzhang | 2021-05-10 15:20:48 | \N |
 | 23 | 22 | neiljianliu | 7 | neiljianliu | 2021-05-10 15:26:23 | \N |
 | 24 | 22 | jianfuzhang | 5 | neiljianliu | 2021-05-10 15:26:23 | \N |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_name_pid` | 将`username`, `project_id` 列设置为唯一索引 | UNIQUE KEY | `username`, `project_id` |
 
 
 
@@ -535,13 +596,13 @@ sidebar_position: 1
 
 | id | resource_id | version | operation | state | submit_user | system | instance | client_ip | extra_params | err_msg | start_time | end_time | last_update_time |
 | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 183039 | 873513f8-9ad0-4473-b7b9-1cc2500abab7 | \N | copyResource | success | stacyyan | \N | bdphdp11ide01:9107 | 10.107.118.104 | \N | \N | 2022-03-24 20:11:18 | 2022-03-24 20:11:19 | 2022-03-24 20:11:19 |
-| 259846 | 7ae110d2-5649-4c57-9e4c-b48bb62f3382 | \N | deleteResource | success | stacyyan | WTSS | bdphdp11ide01:9107 | 10.36.35.235 | delete resourceId:7ae110d2-5649-4c57-9e4c-b48bb62f3382, and delete versions is :v000001 | \N | 2022-06-01 14:38:42 | 2022-06-01 14:38:43 | 2022-06-01 14:38:43 |
-| 12551 | 8678bbd5-cfc7-411b-a838-1b145dab8473 | \N | deleteResource | success | neiljianliu | WTSS | bdphdp11ide01:9107 | 10.58.34.204 | delete resourceId:8678bbd5-cfc7-411b-a838-1b145dab8473, and delete versions is :v000001 | \N | 2021-07-16 14:47:15 | 2021-07-16 14:47:15 | 2021-07-16 14:47:15 |
-| 36360 | eadc8908-e00c-4604-ab30-6671f33e753e | \N | deleteResource | success | neiljianliu | WTSS | bdphdp11ide01:9107 | 127.0.0.1 | delete resourceId:eadc8908-e00c-4604-ab30-6671f33e753e, and delete versions is :v000001 | \N | 2021-10-26 17:46:15 | 2021-10-26 17:46:15 | 2021-10-26 17:46:15 |
-| 549888 | dfbd7603-d513-413a-b491-d79a62a25407 | v000001 | upload | success | hadoop | dss | bdphdp11ide01:9107 | 10.107.116.246 | \N | \N | 2022-07-29 00:26:43 | 2022-07-29 00:26:43 | 2022-07-29 00:26:43 |
-| 51775 | ba304c46-ab63-404e-b2aa-69f522ef3baa | v000004 | rollbackVersion | success | johnnwang | \N | bdphdp11ide01:9107 | 10.107.118.104 | \N | \N | 2021-11-27 17:04:28 | 2021-11-27 17:04:28 | 2021-11-27 17:04:28 |
-| 28 | d07d8636-5415-418f-9aff-dde1b3a69569 | v000005 | update | success | hadoop | WTSS | bdphdp11ide01:9107 | 10.107.116.246 | \N | \N | 2021-04-29 14:24:36 | 2021-04-29 14:24:36 | 2021-04-29 14:24:36 |
+| 183039 | 873513f8-9ad0-4473-b7b9-1cc2500abab7 | \N | copyResource | success | stacyyan | \N | localhost11ide01:9107 | 127.0.0.1 | \N | \N | 2022-03-24 20:11:18 | 2022-03-24 20:11:19 | 2022-03-24 20:11:19 |
+| 259846 | 7ae110d2-5649-4c57-9e4c-b48bb62f3382 | \N | deleteResource | success | stacyyan | WTSS | localhost11ide01:9107 | 127.0.0.1 | delete resourceId:7ae110d2-5649-4c57-9e4c-b48bb62f3382, and delete versions is :v000001 | \N | 2022-06-01 14:38:42 | 2022-06-01 14:38:43 | 2022-06-01 14:38:43 |
+| 12551 | 8678bbd5-cfc7-411b-a838-1b145dab8473 | \N | deleteResource | success | neiljianliu | WTSS | localhost11ide01:9107 | 127.0.0.1 | delete resourceId:8678bbd5-cfc7-411b-a838-1b145dab8473, and delete versions is :v000001 | \N | 2021-07-16 14:47:15 | 2021-07-16 14:47:15 | 2021-07-16 14:47:15 |
+| 36360 | eadc8908-e00c-4604-ab30-6671f33e753e | \N | deleteResource | success | neiljianliu | WTSS | localhost11ide01:9107 | 127.0.0.1 | delete resourceId:eadc8908-e00c-4604-ab30-6671f33e753e, and delete versions is :v000001 | \N | 2021-10-26 17:46:15 | 2021-10-26 17:46:15 | 2021-10-26 17:46:15 |
+| 549888 | dfbd7603-d513-413a-b491-d79a62a25407 | v000001 | upload | success | hadoop | dss | localhost11ide01:9107 | 127.0.0.1 | \N | \N | 2022-07-29 00:26:43 | 2022-07-29 00:26:43 | 2022-07-29 00:26:43 |
+| 51775 | ba304c46-ab63-404e-b2aa-69f522ef3baa | v000004 | rollbackVersion | success | johnnwang | \N | localhost11ide01:9107 | 127.0.0.1 | \N | \N | 2021-11-27 17:04:28 | 2021-11-27 17:04:28 | 2021-11-27 17:04:28 |
+| 28 | d07d8636-5415-418f-9aff-dde1b3a69569 | v000005 | update | success | hadoop | WTSS | localhost11ide01:9107 | 127.0.0.1 | \N | \N | 2021-04-29 14:24:36 | 2021-04-29 14:24:36 | 2021-04-29 14:24:36 |
 
 
 ## 23. linkis_ps_bml_resources_version
@@ -570,9 +631,15 @@ sidebar_position: 1
 
 | id | resource_id | file_md5 | version | size | start_byte | end_byte | resource | description | start_time | end_time | client_ip | updator | enable_flag |
 | ---: | --- | --- | --- | ---: | ---: | ---: | --- | --- | --- | --- | --- | --- | ---: |
-| 1 | 863846e2-bd31-49ba-babe-9a2b96616d71 | b8fd956fd8f83d09d203bf9e4b40543f | v000001 | 1668 | 1 | 1668 | hdfs:///apps-data/hadoop/bml/20210429/863846e2-bd31-49ba-babe-9a2b96616d71 | \N | 2021-04-29 12:21:07 | 2021-04-29 12:21:07 | 10.107.118.104 | \N | 1 |
-| 2 | 9d39cb8e-1447-46d5-a11d-b597b2e3200f | 46bf4ff26651c448efb85ffa9c54907f | v000001 | 58965932 | 1 | 58965932 | hdfs:///apps-data/hadoop/bml/20210429/9d39cb8e-1447-46d5-a11d-b597b2e3200f | \N | 2021-04-29 12:21:10 | 2021-04-29 12:21:10 | 10.107.118.104 | \N | 1 |
-| 3 | bc620bfd-d3f4-4fa5-84f7-1c484fac2241 | 8e13ba687fa1ee04e113bff50290a5c6 | v000001 | 1745 | 1 | 1745 | hdfs:///apps-data/hadoop/bml/20210429/bc620bfd-d3f4-4fa5-84f7-1c484fac2241 | \N | 2021-04-29 12:21:14 | 2021-04-29 12:21:14 | 10.107.118.104 | \N | 1 |
+| 1 | 863846e2-bd31-49ba-babe-9a2b96616d71 | b8fd956fd8f83d09d203bf9e4b40543f | v000001 | 1668 | 1 | 1668 | hdfs:///apps-data/hadoop/bml/20210429/863846e2-bd31-49ba-babe-9a2b96616d71 | \N | 2021-04-29 12:21:07 | 2021-04-29 12:21:07 | 127.0.0.1 | \N | 1 |
+| 2 | 9d39cb8e-1447-46d5-a11d-b597b2e3200f | 46bf4ff26651c448efb85ffa9c54907f | v000001 | 58965932 | 1 | 58965932 | hdfs:///apps-data/hadoop/bml/20210429/9d39cb8e-1447-46d5-a11d-b597b2e3200f | \N | 2021-04-29 12:21:10 | 2021-04-29 12:21:10 | 127.0.0.1 | \N | 1 |
+| 3 | bc620bfd-d3f4-4fa5-84f7-1c484fac2241 | 8e13ba687fa1ee04e113bff50290a5c6 | v000001 | 1745 | 1 | 1745 | hdfs:///apps-data/hadoop/bml/20210429/bc620bfd-d3f4-4fa5-84f7-1c484fac2241 | \N | 2021-04-29 12:21:14 | 2021-04-29 12:21:14 | 127.0.0.1 | \N | 1 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_rid_version` | 将`resource_id`, `version` 列设置为唯一索引 | UNIQUE KEY | `resource_id`, `version` |
 
 
 
@@ -603,6 +670,12 @@ sidebar_position: 1
 | 6 | `update_time` |  | datetime |  | NO |  | CURRENT_TIMESTAMP |
 | 7 | `create_time` |  | datetime |  | NO |  | CURRENT_TIMESTAMP |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_lock_object` | 将`lock_object` 列设置为唯一索引 | UNIQUE KEY | `lock_object` |
+
 
 **示例数据** 
 
@@ -611,6 +684,12 @@ sidebar_position: 1
 | 101 | 46586 | 1 |  | \N | 2021-08-19 20:07:09 | 2021-08-19 20:07:09 |
 | 102 | 46587 | 2 |  | \N | 2021-08-19 20:07:20 | 2021-08-19 20:07:20 |
 | 103 | 47340 | 1 |  | \N | 2021-08-23 10:50:02 | 2021-08-23 10:50:02 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_label_id` | 将`label_id` 列设置为唯一索引 | UNIQUE INDEX | `label_id` |
 
 
 
@@ -667,6 +746,12 @@ sidebar_position: 1
 | 64 | 19 | python2 | 3300 | 2022-08-09 17:38:15 | 2021-06-08 20:15:04 |
 | 65 | 5 | 50G | 1348 | 2022-05-16 15:39:44 | 2021-06-10 17:55:11 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_kid_lid` | 将 `config_key_id`, `config_label_id` 列设置为唯一索引 | UNIQUE INDEX | `config_key_id`, `config_label_id` |
+
 
 
 ## 28. linkis_ps_configuration_key_engine_relation
@@ -691,6 +776,11 @@ sidebar_position: 1
 | 74 | 2 | 46586 |
 | 81 | 2 | 47340 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_kid_lid` | 将`config_key_id`, `engine_type_label_id` 列设置为唯一索引 | UNIQUE INDEX | `config_key_id`, `engine_type_label_id` |
 
 
 
@@ -707,6 +797,12 @@ sidebar_position: 1
 | 7 | `update_time` | update unix timestamp | datetime |  | NO |  | CURRENT_TIMESTAMP |
 | 8 | `create_time` | create time | datetime |  | NO |  | CURRENT_TIMESTAMP |
 | 9 | `access_time` | last access time | datetime |  | NO |  | CURRENT_TIMESTAMP |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `idx_keyword` | 将`keyword` 列设置为普通索引 | INDEX | `keyword` |
 
 
 
@@ -737,6 +833,13 @@ sidebar_position: 1
 | 62120 | alexwu | \N | {"className":"org.apache.linkis.cs.common.entity.source.LinkisHAWorkFlowContextID","subs":[],"fieldNames":[],"fieldValues":[],"fieldTypes":[]} | \N | \N | cs_2_dev | cs_1_dev | 2022-11-16 14:32:16 | 2022-11-16 14:32:16 | 2022-11-16 14:32:16 |
 
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `idx_instance` | 将`instance` 列设置为普通索引 | INDEX | `instance` |
+| 2 | `idx_backup_instance` | 将`backup_instance` 列设置为普通索引 | INDEX | `backup_instance` |
+| 3 | `idx_instance_bin` | 将`instance`(128),`backup_instance` 列设置为普通索引 | INDEX | `instance`(128),`backup_instance` |
 
 
 
@@ -787,6 +890,13 @@ sidebar_position: 1
 | 31327 | node.sql_3999.table.cs_tmp_sql_3999_rs1 | PUBLIC | METADATA | {"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextKeyValue","subs":[{"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextKey","subs":[],"fieldNames":[],"fieldValues":[],"fieldTypes":[]},{"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextValue","subs":[],"fieldNames":[],"fieldValues":[],"fieldTypes":[]}],"fieldNames":[],"fieldValues":[],"fieldTypes":[]} | {"type":"CSTable","value":"{\"name\":\"cs_tmp_sql_3999_rs1\",\"alias\":null,\"creator\":\"hadoop\",\"comment\":\"cs temp table\",\"createTime\":\"2021-07-28T17:55:56+0800\",\"productName\":null,\"projectName\":null,\"usage\":null,\"lifecycle\":null,\"useWay\":null,\"isImport\":false,\"modelLevel\":null,\"isExternalUse\":true,\"isPartitionTable\":false,\"isAvailable\":true,\"isView\":true,\"location\":\"hdfs:///apps-data/hadoop/linkis/20210728_175555/nodeexecution/344064/_0.dolphin\",\"columns\":[{\"name\":\"database\",\"alias\":null,\"type\":\"string\",\"comment\":null,\"express\":null,\"rule\":null,\"isPrimary\":null,\"length\":null},{\"name\":\"tableName\",\"alias\":null,\"type\":\"string\",\"comment\":null,\"express\":null,\"rule\":null,\"isPrimary\":null,\"length\":null},{\"name\":\"isTemporary\",\"alias\":null,\"type\":\"boolean\",\"comment\":null,\"express\":null,\"rule\":null,\"isPrimary\":null,\"length\":null}],\"partitions\":null,\"db\":null}"} | 3 | ["node.sql_3999.table.cs_tmp_sql_3999_rs1","hdfs:///apps-data/hadoop/linkis/20210728_175555/nodeexecution/344064/_0.dolphin","cs_tmp_sql_3999_rs1"] | 2022-06-01 11:38:30 | 2022-06-01 11:38:32 | 2022-06-06 15:37:42 |
 | 31325 | flow.variable.user.to.proxy | PUBLIC | OBJECT | {"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextKeyValue","subs":[{"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextKey","subs":[],"fieldNames":[],"fieldValues":[],"fieldTypes":[]},{"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextValue","subs":[],"fieldNames":[],"fieldValues":[],"fieldTypes":[]}],"fieldNames":[],"fieldValues":[],"fieldTypes":[]} | {"type":"LinkisVariable","value":"{\"key\":\"user.to.proxy\",\"value\":\"alexyang\"}"} | 3 | ["user.to.proxy","flow.variable.user.to.proxy"] | 2022-06-01 11:38:30 | 2022-06-01 11:38:32 | 2022-06-06 15:37:42 |
 | 31326 | flow.infos | PUBLIC | OBJECT | {"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextKeyValue","subs":[{"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextKey","subs":[],"fieldNames":[],"fieldValues":[],"fieldTypes":[]},{"className":"com.webank.wedatasphere.linkis.cs.common.entity.source.CommonContextValue","subs":[],"fieldNames":[],"fieldValues":[],"fieldTypes":[]}],"fieldNames":[],"fieldValues":[],"fieldTypes":[]} | {"type":"CSFlowInfos","value":"{\"infos\":{\"parent\":\"null\",\"id_nodeName\":{\"b08c3f5e-f5d7-4209-866b-f4f963196b3d\":\"sql_3999\",\"4b9b446b-304d-451f-90b6-67d9ad5d3e49\":\"widget_654\"},\"edges\":[{\"source\":\"b08c3f5e-f5d7-4209-866b-f4f963196b3d\",\"target\":\"4b9b446b-304d-451f-90b6-67d9ad5d3e49\",\"sourceLocation\":\"right\",\"targetLocation\":\"left\"}]}}"} | 3 | ["flow.infos"] | 2022-06-01 11:38:30 | 2022-06-01 11:38:32 | 2022-06-06 15:37:42 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_key_cid_ctype` | 将`key`,`context_id`,`context_type`列设置为唯一索引 | UNIQUE INDEX | `key`,`context_id`,`context_type` |
+| 2 | `idx_keywords` | 将`keywords`列设置为普通索引 |  INDEX | `keywords` |
 
 
 ## 33. linkis_ps_cs_context_map_listener
@@ -917,6 +1027,13 @@ sidebar_position: 1
 | 215 | jin_ind | test_1109aaa | test_1109aaa | stacyyan |  | 2022-11-09 09:51:41 |  |  |  | 0 | 0 | 1 | 0 | 0 | 1 | 1 |
 | 214 | stacyyan_ind | test_1108ar | test_1108ar | stacyyan |  | 2022-11-08 21:14:41 |  |  |  | 0 | 0 | 1 | 0 | 0 | 1 | 1 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_db_name` | 将`database`,`name` 列设置为唯一索引 | UNIQUE INDEX |`database`,`name` |
+
+
 
 ## 39. linkis_ps_datasource_table_info
 
@@ -960,9 +1077,9 @@ sidebar_position: 1
 
 | id | datasource_name | datasource_desc | datasource_type_id | create_identify | create_system | parameter | create_time | modify_time | create_user | modify_user | labels | version_id | expire | published_version_id |
 | ---: | --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- | ---: | ---: | ---: |
-| 243 | mongodb_test_20221020101428 | create | 6 | \N | Linkis | {"dataSourceTypeId":"6","host":"10.107.102.231","port":"20500","params":"{\"connectTimeout\":\"100\"}","database":"dpvcs-dev","username":"dpvcsopr","password":"dpvcsopr"} | 2022-10-20 10:14:36 | 2022-10-20 10:14:36 | janicegong | \N | auto_test20220801 | 2 | 0 | 1 |
+| 243 | mongodb_test_20221020101428 | create | 6 | \N | Linkis | {"dataSourceTypeId":"6","host":"127.0.0.1","port":"20500","params":"{\"connectTimeout\":\"100\"}","database":"dpvcs-dev","username":"dpvcsopr","password":"dpvcsopr"} | 2022-10-20 10:14:36 | 2022-10-20 10:14:36 | janicegong | \N | auto_test20220801 | 2 | 0 | 1 |
 | 244 | elasticsearch_test__20221020101428 | create | 7 | \N | Linkis | {"dataSourceTypeId":"7","username":"test","password":"123456","elasticUrls":"[\"http://127.0.0.1:9101\"]"} | 2022-10-20 10:14:38 | 2022-10-20 10:14:38 | janicegong | \N | auto_test20220801 | 2 | 1 | 1 |
-| 245 | mysql_test_1027 | mysql | 1 |  | MYSQL | {"host":"10.108.161.105","port":"15304","params":"{\"tinyInt1isBit\":\"false\"}","username":"test","password":"123456"} | 2022-10-27 20:35:05 | 2022-10-27 20:35:05 | stacyyan | \N | demo，勿删 | 1 | 0 | 1 |
+| 245 | mysql_test_1027 | mysql | 1 |  | MYSQL | {"host":"127.0.0.1","port":"15304","params":"{\"tinyInt1isBit\":\"false\"}","username":"test","password":"123456"} | 2022-10-27 20:35:05 | 2022-10-27 20:35:05 | stacyyan | \N | demo，勿删 | 1 | 0 | 1 |
 | 246 | hive_test_sit | demo，勿删 | 4 |  | HIVE | {"envId":"2"} | 2022-10-27 20:35:55 | 2022-10-27 20:35:55 | stacyyan | \N |  | 1 | 0 | 1 |
 
 
@@ -988,9 +1105,15 @@ sidebar_position: 1
 
 | id | env_name | env_desc | datasource_type_id | parameter | create_time | create_user | modify_time | modify_user |
 | ---: | --- | --- | ---: | --- | --- | --- | --- | --- |
-| 1 | BDP-UAT | BDP-UAT测试环境 | 4 | {"uris":"thrift://bdphdp100001:9083", "hadoopConf":{"hive.metastore.execute.setugi":"true"}} | 2022-04-12 22:34:11 | \N | 2022-04-12 22:34:11 | \N |
-| 2 | BDAP-UAT | BDAP-UAT测试环境 | 4 | {"uris":"thrift://bdphdp110001:9083", "hadoopConf":{"hive.metastore.execute.setugi":"true"}} | 2022-04-12 22:34:11 | \N | 2022-04-12 22:34:11 | \N |
+| 1 | BDP-UAT | BDP-UAT测试环境 | 4 | {"uris":"thrift://localhost100001:9083", "hadoopConf":{"hive.metastore.execute.setugi":"true"}} | 2022-04-12 22:34:11 | \N | 2022-04-12 22:34:11 | \N |
+| 2 | BDAP-UAT | BDAP-UAT测试环境 | 4 | {"uris":"thrift://localhost110001:9083", "hadoopConf":{"hive.metastore.execute.setugi":"true"}} | 2022-04-12 22:34:11 | \N | 2022-04-12 22:34:11 | \N |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_env_name` | 将`env_name` 列设置为唯一索引 | UNIQUE KEY | `env_name` |
+| 2 | `uniq_name_dtid` | 将`env_name`, `datasource_type_id` 列设置为唯一索引 | UNIQUE INDEX | `env_name`, `datasource_type_id` |
 
 
 
@@ -1058,6 +1181,12 @@ sidebar_position: 1
 | 5 | 1 | password | 密码 | \N | PASSWORD | \N | 1 | 密码 |  | \N | \N | \N | 2022-04-12 22:34:11 | 2022-04-12 22:34:11 |
 | 6 | 4 | envId | 集群环境 | \N | SELECT | \N | 1 | 集群环境 | \N | \N | \N | /data-source-manager/env-list/all/type/4 | 2022-04-12 22:34:11 | 2022-04-12 22:34:11 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_dstid_key` | 将`data_source_type_id`, `key` 列设置为唯一索引 | UNIQUE KEY | `data_source_type_id`, `key` |
+
 
 
 ## 44. linkis_ps_dm_datasource_version
@@ -1114,6 +1243,13 @@ sidebar_position: 1
 | 4 | `update_time` | update unix timestamp | datetime |  | YES |  | CURRENT_TIMESTAMP |
 | 5 | `create_time` | create unix timestamp | datetime |  | YES |  | CURRENT_TIMESTAMP |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_instance` | 将`instance` 列设置为唯一索引 | UNIQUE KEY | `instance` |
+
+
 
 ## 47. linkis_ps_instance_label
 
@@ -1145,15 +1281,21 @@ sidebar_position: 1
 | 63 | route | test_A | OPTIONAL | 0 | 2022-01-06 15:04:35 | 2022-01-06 15:04:35 |
 | 61 | userCreator | auto-test | OPTIONAL | 2 | 2021-12-22 14:36:33 | 2021-12-22 14:36:33 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_lk_lv` | 将`label_key`,`label_value` 列设置为唯一索引 | UNIQUE KEY | `label_key`,`label_value` |
+
 
 
 **示例数据**
 
 | id | instance | name | update_time | create_time |
 | ---: | --- | --- | --- | --- |
-| 1527 | bdpdws110004:8008 | visualis-prod | 2022-06-28 14:14:36 | 2022-06-28 14:14:36 |
-| 1537 | bdpdws110004:9008 | visualis-dev | 2022-06-30 15:39:19 | 2022-06-30 15:39:18 |
-| 1702 | bdpdws110004:9108 | linkis-ps-cs | 2022-11-08 09:51:23 | 2022-11-08 09:51:23 |
+| 1527 | localhost110004:8008 | visualis-prod | 2022-06-28 14:14:36 | 2022-06-28 14:14:36 |
+| 1537 | localhost110004:9008 | visualis-dev | 2022-06-30 15:39:19 | 2022-06-30 15:39:18 |
+| 1702 | localhost110004:9108 | linkis-ps-cs | 2022-11-08 09:51:23 | 2022-11-08 09:51:23 |
 
 
 ## 48. linkis_ps_instance_label_relation
@@ -1170,9 +1312,16 @@ sidebar_position: 1
 
 | id | label_id | service_instance | update_time | create_time |
 | ---: | ---: | --- | --- | --- |
-| 562 | 2 | bdpujes110002:9108 | 2022-02-14 11:58:57 | 2022-02-14 11:58:57 |
-| 875 | 5 | bdpdws110004:9108 | 2022-11-08 09:51:23 | 2022-11-08 09:51:23 |
-| 876 | 64 | bdphdp11ide01:9108 | 2022-11-08 09:51:26 | 2022-11-08 09:51:26 |
+| 562 | 2 | localhost110002:9108 | 2022-02-14 11:58:57 | 2022-02-14 11:58:57 |
+| 875 | 5 | localhost110004:9108 | 2022-11-08 09:51:23 | 2022-11-08 09:51:23 |
+| 876 | 64 | localhost11ide01:9108 | 2022-11-08 09:51:26 | 2022-11-08 09:51:26 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_lid_instance` | 将`label_id`,`service_instance` 列设置为唯一索引 | UNIQUE KEY | `label_id`,`service_instance` |
+
 
 
 ## 49. linkis_ps_instance_label_value_relation
@@ -1194,6 +1343,12 @@ sidebar_position: 1
 | user | auto | 61 | 2021-12-22 14:36:33 | 2021-12-22 14:36:33 |
 | creator | a | 50 | 2021-08-03 19:40:48 | 2021-08-03 19:40:48 |
 | user | a | 50 | 2021-08-03 19:40:48 | 2021-08-03 19:40:48 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_lvk_lid` | 将`label_value_key`,`label_id` 列设置为唯一索引 | UNIQUE KEY | `label_value_key`,`label_id` |
 
 
 
@@ -1256,16 +1411,22 @@ sidebar_position: 1
 
 | id | job_req_id | submit_user | execute_user | source | labels | params | progress | status | log_path | error_code | error_desc | created_time | updated_time | instances | metrics | engine_type | execution_code | result_location |
 | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- |
-| 3400407 | nodeexecution_owenxu_spark_29 | owenxu | owenxu | {"nodeName":"sql_9024","requestIP":"127.0.0.1","projectName":"testpubauthority","flowName":"test01"} | {"codeType":"sql","engineType":"spark-2.4.3","userCreator":"owenxu-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"sql_9024","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"+PHsmq+A1AkWQ3olJILCuFspWs9RflbL2HLiVea4FcQ\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","wds.dss.workflow.submit.user":"owenxu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"owenxu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"testpubauthority\\\",\\\"flow\\\":\\\"test01\\\",\\\"contextId\\\":\\\"8-8--cs_1_devcs_1_dev58211\\\",\\\"version\\\":\\\"v000003\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sql","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/owenxu/linkis/2022-11-16/155518/nodeexecution/3400407","source":{"nodeName":"sql_9024","projectName":"testpubauthority","flowName":"test01","requestIP":"127.0.0.1"},"jobId":"3400407","job":{"#rt_rs_store_path":"hdfs:///apps-data/owenxu/linkis/2022-11-16/155518/nodeexecution/3400407"}},"startup":{"jobId":"3400407"}},"variable":{"user.to.proxy":"owenxu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"owenxu-schedulis","codeType":"sql","engineType":"spark-2.4.3","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/owenxu/3400407.log | 0 |  | 2022-11-16 15:55:18.000 | 2022-11-16 15:55:20.387 | bdphdp11ide01:9205 | {"scheduleTime":"2022-11-16T15:55:19+0800","timeToOrchestrator":"2022-11-16T15:55:19+0800","engineconnMap":{"gz.xg.bdpdws110001.webank:27735":{"engineInstance":"gz.xg.bdpdws110001.webank:27735","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400407_otJobId_astJob_647_codeExec_647","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_647"}},"submitTime":"2022-11-16T15:55:18+0800","yarnResource":{},"completeTime":"2022-11-16T15:55:20+0800"} | spark | select 1| hdfs:///apps-data/owenxu/linkis/2022-11-16/155518/nodeexecution/3400407 |
-| 3400406 | nodeexecution_johnnwang_spark_42 | johnnwang | johnnwang | {"nodeName":"sql_2947","requestIP":"127.0.0.1","projectName":"hmh0901","flowName":"flow001"} | {"codeType":"sql","engineType":"spark-2.4.3","userCreator":"johnnwang-nodeexecution"} | {"configuration":{"startup":{"spark.executor.memory":"3G","spark.driver.memory":"3G","spark.executor.cores":"2","spark.executor.instances":"2","wds.linkis.rm.yarnqueue":"dws","ReuseEngine":"true","jobId":"3400406"},"runtime":{"nodeName":"sql_2947","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"Lg76z9Wq/bjKI3Kp1nTKBNZnRJ6dDz3v5E4e2cL2cD4\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","wds.dss.workflow.submit.user":"johnnwang","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"johnnwang\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"hmh0901\\\",\\\"flow\\\":\\\"flow001\\\",\\\"contextId\\\":\\\"8-8--cs_1_devcs_1_dev61373\\\",\\\"version\\\":\\\"v000005\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sql","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400406","source":{"nodeName":"sql_2947","projectName":"hmh0901","flowName":"flow001","requestIP":"127.0.0.1"},"jobId":"3400406","job":{"#rt_rs_store_path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400406"}}},"variable":{"user.to.proxy":"johnnwang","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"johnnwang-schedulis","codeType":"sql","engineType":"spark-2.4.3","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/johnnwang/3400406.log | 0 |  | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:19.328 | bdphdp11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"gz.xg.bdpdws110001.webank:35637":{"engineInstance":"gz.xg.bdpdws110001.webank:35637","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400406_otJobId_astJob_646_codeExec_646","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_646"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:19+0800"} | spark | show tables;| hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400406 |
-| 3400405 | nodeexecution_johnnwang_appconn_42 | johnnwang | johnnwang | {"nodeName":"sqoop_6588","requestIP":"127.0.0.1","projectName":"hmh0901","flowName":"flow001"} | {"codeType":"exchangis.sqoop","engineType":"appconn-1","userCreator":"johnnwang-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"sqoop_6588","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"Lg76z9Wq/bjKI3Kp1nTKBNZnRJ6dDz3vupd1m5IsFA0\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","variables":{"user.to.proxy":"johnnwang","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"johnnwang","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"johnnwang\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"hmh0901\\\",\\\"flow\\\":\\\"flow001\\\",\\\"contextId\\\":\\\"8-8--cs_1_devcs_1_dev61373\\\",\\\"version\\\":\\\"v000005\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"exchangis.sqoop","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400405","source":{"nodeName":"sqoop_6588","projectName":"hmh0901","flowName":"flow001","requestIP":"127.0.0.1"},"jobId":"3400405","job":{"#rt_rs_store_path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400405"}},"startup":{"jobId":"3400405"}},"variable":{"user.to.proxy":"johnnwang","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"johnnwang-schedulis","codeType":"exchangis.sqoop","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Failed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/johnnwang/3400405.log | \N | 21304, Task(codeExec_645) status not succeed,is Failed | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:18.475 | bdphdp11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"bdpdws110004:10781":{"engineInstance":"bdpdws110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400405_otJobId_astJob_645_codeExec_645","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_645"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | appconn | {"id":5924} | hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400405 |
-| 3400404 | nodeexecution_allenlliu_shell_25 | allenlliu | allenlliu | {"nodeName":"shell_4441","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"shell","engineType":"shell-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"shell_4441","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelCaiwk84RsEk\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sh","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400404","source":{"nodeName":"shell_4441","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400404","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400404"}},"startup":{"jobId":"3400404"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"shell","engineType":"shell-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400404.log | 0 |  | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:18.359 | bdpujes110002:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"bdpdws110004:14499":{"engineInstance":"bdpdws110004:14499","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400404_otJobId_astJob_532_codeExec_532","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_532"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | shell | echo  'hello'| hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400404 |
-| 3400403 | nodeexecution_allenlliu_appconn_111 | allenlliu | allenlliu | {"nodeName":"datachecker_90101_copy_copy","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"datachecker","engineType":"appconn-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"startup":{"ReuseEngine":"true","jobId":"3400403"},"runtime":{"max.check.hours":"1","nodeName":"datachecker_90101_copy_copy","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oUNZnRJ6dDz3vcFfovQF97E8\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","variables":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","check.object":"allenlliu_ind.a","nodeType":"datachecker","source.type":"hivedb","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400403","source":{"nodeName":"datachecker_90101_copy_copy","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400403","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400403"}}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"datachecker","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400403.log | 0 |  | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:18.060 | bdphdp11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"bdpdws110004:10781":{"engineInstance":"bdpdws110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400403_otJobId_astJob_644_codeExec_644","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_644"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | appconn | {"configuration":{"startup":{"ReuseEngine":"true"},"runtime":{"max.check.hours":"1","check.object":"allenlliu_ind.a","source.type":"hivedb"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"labels":"{\"route\":\"prod\"}"}} | hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400403 |
-| 3400402 | nodeexecution_allenlliu_spark_32 | allenlliu | allenlliu | {"nodeName":"sql_3520","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"sql","engineType":"spark-2.4.3","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"sql_3520","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelslfPQ0jh9bw\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sql","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400402","source":{"nodeName":"sql_3520","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400402","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400402"}},"startup":{"jobId":"3400402"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"sql","engineType":"spark-2.4.3","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400402.log | 0 |  | 2022-11-16 15:52:16.000 | 2022-11-16 15:52:18.436 | bdpujes110002:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"bdpdws110004:25145":{"engineInstance":"bdpdws110004:25145","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400402_otJobId_astJob_531_codeExec_531","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_531"}},"submitTime":"2022-11-16T15:52:16+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | spark | show tables| hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400402 |
-| 3400401 | nodeexecution_allenlliu_appconn_85 | allenlliu | allenlliu | {"nodeName":"datachecker_90101","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"datachecker","engineType":"appconn-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"startup":{"ReuseEngine":"true","jobId":"3400401"},"runtime":{"max.check.hours":"1","nodeName":"datachecker_90101","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelHY1ioj7PF6w\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","variables":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","check.object":"allenlliu_ind.a","nodeType":"datachecker","source.type":"hivedb","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400401","source":{"nodeName":"datachecker_90101","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400401","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400401"}}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"datachecker","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400401.log | 0 |  | 2022-11-16 15:52:16.000 | 2022-11-16 15:52:17.718 | bdpujes110002:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"bdpdws110004:10781":{"engineInstance":"bdpdws110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400401_otJobId_astJob_530_codeExec_530","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_530"}},"submitTime":"2022-11-16T15:52:16+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:17+0800"} | appconn | {"configuration":{"startup":{"ReuseEngine":"true"},"runtime":{"max.check.hours":"1","check.object":"allenlliu_ind.a","source.type":"hivedb"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"labels":"{\"route\":\"prod\"}"}} | hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400401 |
-| 3400400 | nodeexecution_allenlliu_appconn_110 | allenlliu | allenlliu | {"nodeName":"datachecker_90101_copy","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"datachecker","engineType":"appconn-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"startup":{"ReuseEngine":"true","jobId":"3400400"},"runtime":{"max.check.hours":"1","nodeName":"datachecker_90101_copy","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelBtBXO2lr2rM\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://bdphdp11ide01:9001\"}","variables":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","check.object":"allenlliu_ind.a","nodeType":"datachecker","source.type":"hivedb","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400400","source":{"nodeName":"datachecker_90101_copy","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400400","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400400"}}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"datachecker","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400400.log | 0 |  | 2022-11-16 15:52:16.000 | 2022-11-16 15:52:17.736 | bdphdp11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"bdpdws110004:10781":{"engineInstance":"bdpdws110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400400_otJobId_astJob_643_codeExec_643","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_643"}},"submitTime":"2022-11-16T15:52:16+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:17+0800"} | appconn | {"configuration":{"startup":{"ReuseEngine":"true"},"runtime":{"max.check.hours":"1","check.object":"allenlliu_ind.a","source.type":"hivedb"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"labels":"{\"route\":\"prod\"}"}} | hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400400 |
-| 3400399 | IDE_connorliuyude_spark_1 | connorliuyude | connorliuyude | {"DSS-Scriptis":"import_to_connorliuyude_qml.peter_100w_1000_a_1668585127900.scala","requestIP":"10.107.116.246"} | {"codeType":"scala","engineType":"spark-2.4.3","userCreator":"connorliuyude-IDE"} | {"configuration":{"special":{},"runtime":{"args":"","env":[],"wds.linkis.resultSet.store.path":"hdfs:///apps-data/connorliuyude/linkis/2022-11-16/155208/IDE/3400399","source":{"DSS-Scriptis":"import_to_connorliuyude_qml.peter_100w_1000_a_1668585127900.scala","requestIP":"10.107.116.246"},"jobId":"3400399","job":{"#rt_rs_store_path":"hdfs:///apps-data/connorliuyude/linkis/2022-11-16/155208/IDE/3400399"}},"startup":{"jobId":"3400399"}},"variable":{}} | 0.7191358 | Running | hdfs:///appcom/logs/linkis/log/2022-11-16/IDE/connorliuyude/3400399.log | \N | \N | 2022-11-16 15:52:08.000 | 2022-11-16 15:55:38.556 | bdphdp11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:09+0800","timeToOrchestrator":"2022-11-16T15:52:09+0800","engineconnMap":{"gz.xg.bdpdws110001.webank:33228":{"engineInstance":"gz.xg.bdpdws110001.webank:33228","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400399_otJobId_astJob_642_codeExec_642","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_642"}},"submitTime":"2022-11-16T15:52:08+0800","yarnResource":{"application_1662051718074_332612":{"queueMemory":107374182400,"queueCores":20,"queueInstances":0,"jobStatus":"COMPLETED","queue":"queue_0701_01"}}} | spark | val source = """{"path":"/apps-data/connorliuyude/peter_100w_1000_a.csv","pathType":"hdfs","encoding":"utf-8","fieldDelimiter":",","hasHeader":true,"sheet":"","quote":"","escapeQuotes":false}""" val destination = """hdfs:///tmp/bdp-ide/connorliuyude/executionCode/20221116/_bgservice;454023#74026""" org.apache.linkis.engineplugin.spark.imexport.LoadData.loadDataToTableByFile(spark,destination,source) | hdfs:///apps-data/connorliuyude/linkis/2022-11-16/155208/IDE/3400399 |
+| 3400407 | nodeexecution_owenxu_spark_29 | owenxu | owenxu | {"nodeName":"sql_9024","requestIP":"127.0.0.1","projectName":"testpubauthority","flowName":"test01"} | {"codeType":"sql","engineType":"spark-2.4.3","userCreator":"owenxu-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"sql_9024","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"+PHsmq+A1AkWQ3olJILCuFspWs9RflbL2HLiVea4FcQ\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","wds.dss.workflow.submit.user":"owenxu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"owenxu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"testpubauthority\\\",\\\"flow\\\":\\\"test01\\\",\\\"contextId\\\":\\\"8-8--cs_1_devcs_1_dev58211\\\",\\\"version\\\":\\\"v000003\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sql","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/owenxu/linkis/2022-11-16/155518/nodeexecution/3400407","source":{"nodeName":"sql_9024","projectName":"testpubauthority","flowName":"test01","requestIP":"127.0.0.1"},"jobId":"3400407","job":{"#rt_rs_store_path":"hdfs:///apps-data/owenxu/linkis/2022-11-16/155518/nodeexecution/3400407"}},"startup":{"jobId":"3400407"}},"variable":{"user.to.proxy":"owenxu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"owenxu-schedulis","codeType":"sql","engineType":"spark-2.4.3","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/owenxu/3400407.log | 0 |  | 2022-11-16 15:55:18.000 | 2022-11-16 15:55:20.387 | localhost11ide01:9205 | {"scheduleTime":"2022-11-16T15:55:19+0800","timeToOrchestrator":"2022-11-16T15:55:19+0800","engineconnMap":{"gz.xg.localhost110001.webank:27735":{"engineInstance":"gz.xg.localhost110001.webank:27735","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400407_otJobId_astJob_647_codeExec_647","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_647"}},"submitTime":"2022-11-16T15:55:18+0800","yarnResource":{},"completeTime":"2022-11-16T15:55:20+0800"} | spark | select 1| hdfs:///apps-data/owenxu/linkis/2022-11-16/155518/nodeexecution/3400407 |
+| 3400406 | nodeexecution_johnnwang_spark_42 | johnnwang | johnnwang | {"nodeName":"sql_2947","requestIP":"127.0.0.1","projectName":"hmh0901","flowName":"flow001"} | {"codeType":"sql","engineType":"spark-2.4.3","userCreator":"johnnwang-nodeexecution"} | {"configuration":{"startup":{"spark.executor.memory":"3G","spark.driver.memory":"3G","spark.executor.cores":"2","spark.executor.instances":"2","wds.linkis.rm.yarnqueue":"dws","ReuseEngine":"true","jobId":"3400406"},"runtime":{"nodeName":"sql_2947","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"Lg76z9Wq/bjKI3Kp1nTKBNZnRJ6dDz3v5E4e2cL2cD4\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","wds.dss.workflow.submit.user":"johnnwang","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"johnnwang\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"hmh0901\\\",\\\"flow\\\":\\\"flow001\\\",\\\"contextId\\\":\\\"8-8--cs_1_devcs_1_dev61373\\\",\\\"version\\\":\\\"v000005\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sql","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400406","source":{"nodeName":"sql_2947","projectName":"hmh0901","flowName":"flow001","requestIP":"127.0.0.1"},"jobId":"3400406","job":{"#rt_rs_store_path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400406"}}},"variable":{"user.to.proxy":"johnnwang","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"johnnwang-schedulis","codeType":"sql","engineType":"spark-2.4.3","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/johnnwang/3400406.log | 0 |  | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:19.328 | localhost11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"gz.xg.localhost110001.webank:35637":{"engineInstance":"gz.xg.localhost110001.webank:35637","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400406_otJobId_astJob_646_codeExec_646","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_646"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:19+0800"} | spark | show tables;| hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400406 |
+| 3400405 | nodeexecution_johnnwang_appconn_42 | johnnwang | johnnwang | {"nodeName":"sqoop_6588","requestIP":"127.0.0.1","projectName":"hmh0901","flowName":"flow001"} | {"codeType":"exchangis.sqoop","engineType":"appconn-1","userCreator":"johnnwang-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"sqoop_6588","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"Lg76z9Wq/bjKI3Kp1nTKBNZnRJ6dDz3vupd1m5IsFA0\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","variables":{"user.to.proxy":"johnnwang","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"johnnwang","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"johnnwang\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"hmh0901\\\",\\\"flow\\\":\\\"flow001\\\",\\\"contextId\\\":\\\"8-8--cs_1_devcs_1_dev61373\\\",\\\"version\\\":\\\"v000005\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"exchangis.sqoop","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400405","source":{"nodeName":"sqoop_6588","projectName":"hmh0901","flowName":"flow001","requestIP":"127.0.0.1"},"jobId":"3400405","job":{"#rt_rs_store_path":"hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400405"}},"startup":{"jobId":"3400405"}},"variable":{"user.to.proxy":"johnnwang","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"johnnwang-schedulis","codeType":"exchangis.sqoop","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Failed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/johnnwang/3400405.log | \N | 21304, Task(codeExec_645) status not succeed,is Failed | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:18.475 | localhost11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"localhost110004:10781":{"engineInstance":"localhost110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400405_otJobId_astJob_645_codeExec_645","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_645"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | appconn | {"id":5924} | hdfs:///apps-data/johnnwang/linkis/2022-11-16/155217/nodeexecution/3400405 |
+| 3400404 | nodeexecution_allenlliu_shell_25 | allenlliu | allenlliu | {"nodeName":"shell_4441","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"shell","engineType":"shell-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"shell_4441","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelCaiwk84RsEk\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sh","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400404","source":{"nodeName":"shell_4441","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400404","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400404"}},"startup":{"jobId":"3400404"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"shell","engineType":"shell-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400404.log | 0 |  | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:18.359 | localhost110002:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"localhost110004:14499":{"engineInstance":"localhost110004:14499","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400404_otJobId_astJob_532_codeExec_532","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_532"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | shell | echo  'hello'| hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400404 |
+| 3400403 | nodeexecution_allenlliu_appconn_111 | allenlliu | allenlliu | {"nodeName":"datachecker_90101_copy_copy","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"datachecker","engineType":"appconn-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"startup":{"ReuseEngine":"true","jobId":"3400403"},"runtime":{"max.check.hours":"1","nodeName":"datachecker_90101_copy_copy","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oUNZnRJ6dDz3vcFfovQF97E8\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","variables":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","check.object":"allenlliu_ind.a","nodeType":"datachecker","source.type":"hivedb","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400403","source":{"nodeName":"datachecker_90101_copy_copy","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400403","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400403"}}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"datachecker","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400403.log | 0 |  | 2022-11-16 15:52:17.000 | 2022-11-16 15:52:18.060 | localhost11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"localhost110004:10781":{"engineInstance":"localhost110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400403_otJobId_astJob_644_codeExec_644","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_644"}},"submitTime":"2022-11-16T15:52:17+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | appconn | {"configuration":{"startup":{"ReuseEngine":"true"},"runtime":{"max.check.hours":"1","check.object":"allenlliu_ind.a","source.type":"hivedb"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"labels":"{\"route\":\"prod\"}"}} | hdfs:///apps-data/allenlliu/linkis/2022-11-16/155217/nodeexecution/3400403 |
+| 3400402 | nodeexecution_allenlliu_spark_32 | allenlliu | allenlliu | {"nodeName":"sql_3520","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"sql","engineType":"spark-2.4.3","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"runtime":{"nodeName":"sql_3520","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelslfPQ0jh9bw\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","nodeType":"sql","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400402","source":{"nodeName":"sql_3520","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400402","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400402"}},"startup":{"jobId":"3400402"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"sql","engineType":"spark-2.4.3","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400402.log | 0 |  | 2022-11-16 15:52:16.000 | 2022-11-16 15:52:18.436 | localhost110002:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"localhost110004:25145":{"engineInstance":"localhost110004:25145","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400402_otJobId_astJob_531_codeExec_531","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_531"}},"submitTime":"2022-11-16T15:52:16+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:18+0800"} | spark | show tables| hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400402 |
+| 3400401 | nodeexecution_allenlliu_appconn_85 | allenlliu | allenlliu | {"nodeName":"datachecker_90101","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"datachecker","engineType":"appconn-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"startup":{"ReuseEngine":"true","jobId":"3400401"},"runtime":{"max.check.hours":"1","nodeName":"datachecker_90101","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelHY1ioj7PF6w\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","variables":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","check.object":"allenlliu_ind.a","nodeType":"datachecker","source.type":"hivedb","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400401","source":{"nodeName":"datachecker_90101","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400401","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400401"}}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"datachecker","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400401.log | 0 |  | 2022-11-16 15:52:16.000 | 2022-11-16 15:52:17.718 | localhost110002:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"localhost110004:10781":{"engineInstance":"localhost110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400401_otJobId_astJob_530_codeExec_530","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_530"}},"submitTime":"2022-11-16T15:52:16+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:17+0800"} | appconn | {"configuration":{"startup":{"ReuseEngine":"true"},"runtime":{"max.check.hours":"1","check.object":"allenlliu_ind.a","source.type":"hivedb"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"labels":"{\"route\":\"prod\"}"}} | hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400401 |
+| 3400400 | nodeexecution_allenlliu_appconn_110 | allenlliu | allenlliu | {"nodeName":"datachecker_90101_copy","requestIP":"127.0.0.1","projectName":"mytest_xq_0032","flowName":"test_workflow001"} | {"codeType":"datachecker","engineType":"appconn-1","userCreator":"allenlliu-nodeexecution"} | {"configuration":{"startup":{"ReuseEngine":"true","jobId":"3400400"},"runtime":{"max.check.hours":"1","nodeName":"datachecker_90101_copy","workspace":"{\"workspaceId\":224,\"workspaceName\":\"bdapWorkspace\",\"cookies\":{\"linkis_user_session_ticket_id_v1\":\"y4h8zre1zbG7a5OlwX8oULazMLTJJpelBtBXO2lr2rM\u003d\",\"dataworkcloud_inner_request\":\"true\",\"workspaceName\":\"bdapWorkspace\",\"workspaceId\":\"224\"},\"dssUrl\":\"http://localhost11ide01:9001\"}","variables":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"wds.dss.workflow.submit.user":"allenlliu","contextID":"{\"type\":\"HAWorkFlowContextID\",\"value\":\"{\\\"instance\\\":null,\\\"backupInstance\\\":null,\\\"user\\\":\\\"allenlliu\\\",\\\"workspace\\\":\\\"bdapWorkspace\\\",\\\"project\\\":\\\"mytest_xq_0032\\\",\\\"flow\\\":\\\"test_workflow001\\\",\\\"contextId\\\":\\\"8-8--cs_2_devcs_2_dev10489\\\",\\\"version\\\":\\\"v000009\\\",\\\"env\\\":\\\"BDAP_DEV\\\"}\"}","check.object":"allenlliu_ind.a","nodeType":"datachecker","source.type":"hivedb","labels":"{\"route\":\"prod\"}","wds.linkis.resultSet.store.path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400400","source":{"nodeName":"datachecker_90101_copy","projectName":"mytest_xq_0032","flowName":"test_workflow001","requestIP":"127.0.0.1"},"jobId":"3400400","job":{"#rt_rs_store_path":"hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400400"}}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"userCreator":"allenlliu-schedulis","codeType":"datachecker","engineType":"appconn-1","labels":"{\"route\":\"prod\"}"}} | 1.0 | Succeed | hdfs:///appcom/logs/linkis/log/2022-11-16/nodeexecution/allenlliu/3400400.log | 0 |  | 2022-11-16 15:52:16.000 | 2022-11-16 15:52:17.736 | localhost11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:17+0800","timeToOrchestrator":"2022-11-16T15:52:17+0800","engineconnMap":{"localhost110004:10781":{"engineInstance":"localhost110004:10781","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400400_otJobId_astJob_643_codeExec_643","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_643"}},"submitTime":"2022-11-16T15:52:16+0800","yarnResource":{},"completeTime":"2022-11-16T15:52:17+0800"} | appconn | {"configuration":{"startup":{"ReuseEngine":"true"},"runtime":{"max.check.hours":"1","check.object":"allenlliu_ind.a","source.type":"hivedb"}},"variable":{"user.to.proxy":"allenlliu","run_today_h":"2022111615","run_date":"20221115"},"run_today_h":"2022111615","run_date":"20221115","labels":{"labels":"{\"route\":\"prod\"}"}} | hdfs:///apps-data/allenlliu/linkis/2022-11-16/155216/nodeexecution/3400400 |
+| 3400399 | IDE_connorliuyude_spark_1 | connorliuyude | connorliuyude | {"DSS-Scriptis":"import_to_connorliuyude_qml.peter_100w_1000_a_1668585127900.scala","requestIP":"127.0.0.1"} | {"codeType":"scala","engineType":"spark-2.4.3","userCreator":"connorliuyude-IDE"} | {"configuration":{"special":{},"runtime":{"args":"","env":[],"wds.linkis.resultSet.store.path":"hdfs:///apps-data/connorliuyude/linkis/2022-11-16/155208/IDE/3400399","source":{"DSS-Scriptis":"import_to_connorliuyude_qml.peter_100w_1000_a_1668585127900.scala","requestIP":"127.0.0.1"},"jobId":"3400399","job":{"#rt_rs_store_path":"hdfs:///apps-data/connorliuyude/linkis/2022-11-16/155208/IDE/3400399"}},"startup":{"jobId":"3400399"}},"variable":{}} | 0.7191358 | Running | hdfs:///appcom/logs/linkis/log/2022-11-16/IDE/connorliuyude/3400399.log | \N | \N | 2022-11-16 15:52:08.000 | 2022-11-16 15:55:38.556 | localhost11ide01:9205 | {"scheduleTime":"2022-11-16T15:52:09+0800","timeToOrchestrator":"2022-11-16T15:52:09+0800","engineconnMap":{"gz.xg.localhost110001.webank:33228":{"engineInstance":"gz.xg.localhost110001.webank:33228","taskClassname":"CodeLogicalUnitExecTask","idInfo":"TaskID_3400399_otJobId_astJob_642_codeExec_642","taskName":"CodeLogicalUnitExecTask","execId":"codeExec_642"}},"submitTime":"2022-11-16T15:52:08+0800","yarnResource":{"application_1662051718074_332612":{"queueMemory":107374182400,"queueCores":20,"queueInstances":0,"jobStatus":"COMPLETED","queue":"queue_0701_01"}}} | spark | val source = """{"path":"/apps-data/connorliuyude/peter_100w_1000_a.csv","pathType":"hdfs","encoding":"utf-8","fieldDelimiter":",","hasHeader":true,"sheet":"","quote":"","escapeQuotes":false}""" val destination = """hdfs:///tmp/bdp-ide/connorliuyude/executionCode/20221116/_bgservice;454023#74026""" org.apache.linkis.engineplugin.spark.imexport.LoadData.loadDataToTableByFile(spark,destination,source) | hdfs:///apps-data/connorliuyude/linkis/2022-11-16/155208/IDE/3400399 |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `idx_created_time` | 将`created_time` 列设置为普通索引 | INDEX | `created_time` |
+| 2 | `idx_submit_user` | 将`submit_user` 列设置为普通索引 | INDEX | `submit_user` |
 
 
 ## 52. linkis_ps_resources_download_history
@@ -1286,10 +1447,10 @@ sidebar_position: 1
 
 | id | start_time | end_time | client_ip | state | resource_id | version | downloader |
 | ---: | --- | --- | --- | ---: | --- | --- | --- |
-| 1859617 | 2022-11-16 15:56:17 | 2022-11-16 15:56:18 | 10.107.118.104 | 0 | 11b8ca20-3437-4f31-a808-915a6f016a87 | v000001 | owenxu |
-| 1859614 | 2022-11-16 15:55:18 | 2022-11-16 15:55:18 | 10.107.118.104 | 0 | 836ba735-3a46-4303-8e9f-c4276a356386 | v000001 | owenxu |
-| 1859613 | 2022-11-16 15:53:06 | 2022-11-16 15:53:07 | 172.21.193.229 | 0 | cb407155-242b-4303-8365-1da6256a01e3 | v000173 | hadoop |
-| 1859612 | 2022-11-16 15:52:17 | 2022-11-16 15:52:17 | 10.107.118.104 | 0 | 665fe5ce-fdc6-4b9a-ab08-955e48b1f8d4 | v000001 | owenxu |
+| 1859617 | 2022-11-16 15:56:17 | 2022-11-16 15:56:18 | 127.0.0.1 | 0 | 11b8ca20-3437-4f31-a808-915a6f016a87 | v000001 | owenxu |
+| 1859614 | 2022-11-16 15:55:18 | 2022-11-16 15:55:18 | 127.0.0.1 | 0 | 836ba735-3a46-4303-8e9f-c4276a356386 | v000001 | owenxu |
+| 1859613 | 2022-11-16 15:53:06 | 2022-11-16 15:53:07 | 127.0.0.1 | 0 | cb407155-242b-4303-8365-1da6256a01e3 | v000173 | hadoop |
+| 1859612 | 2022-11-16 15:52:17 | 2022-11-16 15:52:17 | 127.0.0.1 | 0 | 665fe5ce-fdc6-4b9a-ab08-955e48b1f8d4 | v000001 | owenxu |
 
 
 ## 53. linkis_ps_udf
@@ -1545,6 +1706,12 @@ sidebar_position: 1
 | 3 | table_a | \N | \N | -1 | \N | \N | \N |
 | 4 | aaaa | \N | \N | -1 | \N | \N | \N |
 
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `idx_aid` | 将`application_id` 列设置为普通索引 |  INDEX | `application_id` |
+
 
 
 ## 64. linkis_ps_variable_key_user
@@ -1565,4 +1732,51 @@ sidebar_position: 1
 | 1 | -1 | 1 | neiljianliu | d |
 | 2 | -1 | 2 | stacyyan | student |
 | 3 | -1 | 3 | jianfuzhang | a_01 |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `idx_key_id` | 将`key_id` 列设置为普通索引 | INDEX | `key_id` |
+| 2 | `uniq_aid_kid_uname` | 将`application_id`,`key_id`,`user_name` 列设置为普通索引 | INDEX | `application_id`,`key_id`,`user_name` |
+| 3 | `idx_aid` | 将`application_id` 列设置为普通索引 | INDEX | `application_id` |
+
+## 65.linkis_cg_user_ip_config
+
+| 序号 | 名称 | 描述 | 类型 | 键 | 为空 | 额外 | 默认值 |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| 1 | `id` |  | int(20) | PRI | NO | auto_increment |  |
+| 2 | `user` |   | varchar(50) | NO |   |  |  |
+| 3 | `creator` |  | varchar(50) | NO |   |  |  |
+| 4 | `ip_list` |  | text | NO |   |  |  |
+| 5 | `create_time` |   | datetime |NO  |  |  |  |
+| 6 | `update_time` |   | datetime |NO  |  |  |  |
+| 7 | `desc` |   | varchar(100) |NO  |  |  |  |
+| 8 | `bussiness_user` |   | varchar(50) |NO  |  |  |  |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uniq_user_creator` | 将`user`,`creator` 列设置为唯一索引 | UNIQUE KEY  | `user`,`creator` |
+
+
+## 66.linkis_cg_tenant_label_config
+
+| 序号 | 名称 | 描述 | 类型 | 键 | 为空 | 额外 | 默认值 |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| 1 | `id` |  | int(20) | PRI | NO | auto_increment |  |
+| 2 | `user` |   | varchar(50) | NO |   |  |  |
+| 3 | `creator` |  | varchar(50) | NO |   |  |  |
+| 4 | `tenant_value` |  | varchar(128) | NO |   |  |  |
+| 5 | `create_time` |   | datetime |NO  |  |  |  |
+| 6 | `update_time` |   | datetime |NO  |  |  |  |
+| 7 | `desc` |   | varchar(100) |NO  |  |  |  |
+| 8 | `bussiness_user` |   | varchar(50) |NO  |  |  |  |
+
+**索引说明**
+
+| 序号 | 名称 | 描述 | 类型 | 字段 |
+| :--: | :--: | :--: | :--: | :--: |
+| 1 | `uin_user_creator` | 将`user`,`creator` 列设置为唯一索引 | UNIQUE KEY  | `user`,`creator` |
 

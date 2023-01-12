@@ -15,9 +15,9 @@ sidebar_position: 4
 :::
 ```shell
 #如果本地有svn，可以clone到本地 
-svn co https://dist.apache.org/repos/dist/dev/incubator/linkis/${release_version}-${rc_version}/
+svn co https://dist.apache.org/repos/dist/dev/linkis/${release_version}-${rc_version}/
 #或则 直接下载物料文件
-wget https://dist.apache.org/repos/dist/dev/incubator/linkis/${release_version}-${rc_version}/xxx.xxx
+wget https://dist.apache.org/repos/dist/dev/linkis/${release_version}-${rc_version}/xxx.xxx
 
 ```
 ## 2. 验证上传的版本是否合规
@@ -37,7 +37,7 @@ wget https://dist.apache.org/repos/dist/dev/incubator/linkis/${release_version}-
 #### 2.2.1 导入公钥
 
 ```shell
-$ curl  https://downloads.apache.org/incubator/linkis/KEYS > KEYS # 下载KEYS
+$ curl  https://downloads.apache.org/linkis/KEYS > KEYS # 下载KEYS
 $ gpg --import KEYS # 导入KEYS到本地
 ```
 #### 2.2.2 信任公钥
@@ -82,7 +82,7 @@ $ gpg --verify apache-linkis-${release_version}-bin.tar.gz.asc apache-linkis-${r
 > 出现类似以下内容则说明签名正确，关键字：**`Good signature`**
 
 ```shell
-apache-linkis-xxx-incubating-src.tar.gz
+apache-linkis-xxx-src.tar.gz
 gpg: Signature made XXXX
 gpg:                using RSA key XXXXX
 gpg: Good signature from "xxx @apache.org>"
@@ -107,18 +107,18 @@ $ sha512sum --check apache-linkis-${release_version}-bin.tar.gz.sha512
 > Windows
 
 ```shell
-$ certUtil -hashfile apache-linkis-${release_version}-incubating-xxx.tar.gz SHA512
-#并将输出内容与 apache-linkis-${release_version}-incubating-xxx.tar.gz.sha512文件内容作对比
+$ certUtil -hashfile apache-linkis-${release_version}-xxx.tar.gz SHA512
+#并将输出内容与 apache-linkis-${release_version}-xxx.tar.gz.sha512文件内容作对比
 ```
 
 ### 2.4. 检查源码包的文件内容
 
-解压缩`apache-linkis-${release_version}-incubating-src.tar.gz`
+解压缩`apache-linkis-${release_version}-src.tar.gz`
 
 ```text
-$ tar -xvf apache-linkis-${release_version}-incubating-src.tar.gz
+$ tar -xvf apache-linkis-${release_version}-src.tar.gz
 
-$ cd apache-linkis-${release_version}-incubating-src
+$ cd apache-linkis-${release_version}-src
 ```
 
 #### 2.4.1 ASF许可证RAT检查
@@ -153,6 +153,12 @@ Archives: 0
 
 
 #### 2.4.2 项目源码编译验证
+
+:::caution 注意：
+自2022.12.12起，受 Maven 中央仓库网络限制，阿里云云效 Maven 中央代理仓库可能会出现部分新增依赖查找不到的情况(https://developer.aliyun.com/mvn/search)
+如果出现阿里云镜像部分依赖无法下载情况，可使用默认仓库
+::: 
+
 Mac OS/Linux
 ```shell
 $ ./mvnw -N install  
@@ -207,33 +213,26 @@ $ npm install
 进行如下检查:
 
 - [ ] 检查源码包是否包含由于包含不必要文件，致使tar包过于庞大
-- [ ] 文件夹包含单词`incubating`
 - [ ] 存在`LICENSE`和`NOTICE`文件
-- [ ] 存在`DISCLAIMER`或`DISCLAIMER-WIP`文件
 - [ ] `NOTICE`文件中的年份正确
 - [ ] 只存在文本文件，不存在二进制文件
 - [ ] 所有文件的开头都有ASF许可证
 - [ ] 能够正确编译
-- [ ] 检查是否有多余文件或文件夹，例如空文件夹等
-- [ ] .....
-
 
 ### 2.5 检查二进制包
 >如果上传了项目的二进制包/linkis-web的编译包
 
-解压缩`apache-linkis-${release_version}-incubating-bin.tar.gz`，
+解压缩`apache-linkis-${release_version}-bin.tar.gz`，
 
 ```shell
 
-$ mkdir apache-linkis-${release_version}-incubating-bin
-$ tar -xvf  apache-linkis-${release_version}-incubating-bin.tar.gz -C  apache-linkis-${release_version}-incubating-bin
-$ cd apache-linkis-${release_version}-incubating-bin
+$ mkdir apache-linkis-${release_version}-bin
+$ tar -xvf  apache-linkis-${release_version}-bin.tar.gz -C  apache-linkis-${release_version}-bin
+$ cd apache-linkis-${release_version}-bin
 ```
 
 进行如下检查：
-- [ ] 文件夹包含单词`incubating`
 - [ ] 存在`LICENSE`和`NOTICE`文件
-- [ ] 存在`DISCLAIMER`或`DISCLAIMER-WIP`文件
 - [ ] `NOTICE`文件中的年份正确
 - [ ] 所有文本文件开头都有ASF许可证
 - [ ] 检查第三方依赖许可证：
@@ -252,27 +251,13 @@ $ cd apache-linkis-${release_version}-incubating-bin
 <font color="red">
 回复的邮件一定要带上自己检查了那些项信息，仅仅回复`+1 approve`，是无效的。
 
-PPMC在dev@linkis.apache.org linkis的社区投票时，请带上 binding后缀，表示对linkis社区中的投票具有约束性投票，方便统计投票结果。
-
-IPMC在general@incubator.apache.org incubator社区投票，请带上 binding后缀，表示对incubator社区中的投票具有约束性投票，方便统计投票结果。
+PMC在dev@linkis.apache.org linkis的社区投票时，请带上 binding后缀，表示对linkis社区中的投票具有约束性投票，方便统计投票结果。
 
 </font>
 
-:::caution 注意
-如果在dev@linkis.apache.org已经投过票，在incubator社区进行投票回复时，可以直接带过去,<font color="red">需要注意约束性</font>  如:
-
-```html
-//incubator社区 投票时，只有IPMC成员才具有约束性 binding，PPMC需要注意约束性的变化
-Forward my +1 from dev@linkis (non-binding)
-Copy my +1 from linkis DEV ML (non-binding)
-```
-:::
 
 
-
-
-
-非PPMC/IPMC成员
+非PMC成员
 ```html
 +1 (non-binding)
 I  checked:
@@ -283,9 +268,9 @@ I  checked:
     5. ....
 ```
 
-PPMC/IPMC成员
+PMC成员
 ```html
-//incubator社区 投票时，只有IPMC成员才具有约束性 binding
+
 +1 (binding)
 I  checked:
     1. All download links are valid
@@ -301,6 +286,5 @@ I  checked:
 如果你有安装maven工具，你可以使用自己的mvn命令替换 ./mvnw或则mvnw.cmd
 
 mvnw是Maven Wrapper的缩写。它可以支持运行 Maven 项目，而无需安装 Maven 并配置环境变量。如果找不到它，它会根据配置文件，下载对应的 Maven 版本
-
 
 </font>

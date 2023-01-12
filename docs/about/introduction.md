@@ -10,23 +10,23 @@ As a computation middleware, Linkis provides powerful connectivity, reuse, orche
 Since the first release of Linkis in 2019, it has accumulated more than **700** trial companies and **1000+** sandbox trial users, which involving diverse industries, from finance, banking, tele-communication, to manufactory, internet companies and so on. Lots of companies have already used Linkis as a unified entrance for the underlying computation and storage engines of the big data platform.
 
 
-![linkis-intro-01](https://user-images.githubusercontent.com/11496700/84615498-c3030200-aefb-11ea-9b16-7e4058bf6026.png)
+![linkis-intro-01](images/linkis-intro-01.png)
 
-![linkis-intro-03](https://user-images.githubusercontent.com/11496700/84615483-bb435d80-aefb-11ea-81b5-67f62b156628.png)
+![linkis-intro-03](images/linkis-intro-03.png)
 
 ## Features
 
-- **Support for diverse underlying computation storage engines**.  
+- **Support for diverse underlying computation storage engines**：  
     Currently supported computation/storage engines: Spark, Hive, Python, Presto, ElasticSearch, MLSQL, TiSpark, JDBC, Shell, etc;      
     Computation/storage engines to be supported: Flink(Supported in version >=1.0.2), Impala, etc;      
     Supported scripting languages: SparkSQL, HiveQL, Python, Shell, Pyspark, R, Scala and JDBC, etc.  
-- **Powerful task/request governance capabilities**. With services such as Orchestrator, Label Manager and customized Spring Cloud Gateway, Linkis is able to provide multi-level labels based, cross-cluster/cross-IDC fine-grained routing, load balance, multi-tenancy, traffic control, resource control, and orchestration strategies like dual-active, active-standby, etc.  
-- **Support full stack computation/storage engine**. As a computation middleware, it will receive, execute and manage tasks and requests for various computation storage engines, including batch tasks, interactive query tasks, real-time streaming tasks and storage tasks;
-- **Resource management capabilities**.  ResourceManager is not only capable of managing resources for Yarn and Linkis EngineManger as in Linkis 0.X, but also able to provide label-based multi-level resource allocation and recycling, allowing itself to have powerful resource management capabilities across multiple Yarn clusters and multiple computation resource types;
-- **Unified Context Service**. Generate Context ID for each **task**/request,  associate and manage user and system resource files (JAR, ZIP, Properties, etc.), result set, parameter variable, function, etc., across user, system, and computing engine. Set in one place, automatic reference everywhere;
-- **Unified materials**. System and user-level unified material management, which can be shared and transferred across users and systems.
-- **Unified Data Source Manage**. Provides functions such as adding, deleting, checking, and modifying data sources of hive, es, mysql, and kafka types, version control, and connection testing.
-- **Unified MetaData Manage**. Provides database, table, and partition queries for hive, es, mysql, and kafka metadata.
+- **Powerful task/request governance capabilities**： With services such as Orchestrator, Label Manager and customized Spring Cloud Gateway, Linkis is able to provide multi-level labels based, cross-cluster/cross-IDC fine-grained routing, load balance, multi-tenancy, traffic control, resource control, and orchestration strategies like dual-active, active-standby, etc.  
+- **Support full stack computation/storage engine**： As a computation middleware, it will receive, execute and manage tasks and requests for various computation storage engines, including batch tasks, interactive query tasks, real-time streaming tasks and storage tasks;
+- **Resource management capabilities**：  ResourceManager is not only capable of managing resources for Yarn and Linkis EngineManger as in Linkis 0.X, but also able to provide label-based multi-level resource allocation and recycling, allowing itself to have powerful resource management capabilities across multiple Yarn clusters and multiple computation resource types.
+- **Unified Context Service**： Generate Context ID for each **task**/request,  associate and manage user and system resource files (JAR, ZIP, Properties, etc.), result set, parameter variable, function, etc., across user, system, and computing engine. Set in one place, automatic reference everywhere.
+- **Unified materials**： System and user-level unified material management, which can be shared and transferred across users and systems.
+- **Unified Data Source Manage**： Provides functions such as adding, deleting, checking, and modifying data sources of hive, es, mysql, and kafka types, version control, and connection testing.
+- **Unified MetaData Manage**： Provides database, table, and partition queries for hive, es, mysql, and kafka metadata.
 
 ## Supported engine types
 
@@ -47,23 +47,24 @@ Since the first release of Linkis in 2019, it has accumulated more than **700** 
 
 ## Download
 
-Please go to the [Linkis releases page](https://github.com/apache/incubator-linkis/releases) to download a compiled distribution or a source code package of Linkis.
+Please go to the [Linkis releases page](https://github.com/apache/linkis/releases) to download a compiled distribution or a source code package of Linkis.
 
 ## Compile and deploy
 Please follow [Compile Guide](../development/build.md) to compile Linkis from source code.  
 Please refer to [Deployment_Documents](../deployment/deploy-quick.md) to do the deployment. 
 
 ## Examples and Guidance
-You can find examples and guidance for how to use and manage Linkis in [User_Manual](../user-guide/overview.md), [engine-usage_Documents](../engine-usage/overview.md) and [API_Documents](../api/overview.md).
+- [Engine Usage Guidelines](../engine-usage/overview.md)
+- [API Documentation](../api/overview.md)
 
 ## Documentation
 
-The documentation of linkis is in [Linkis-WebSite](https://github.com/apache/incubator-linkis-website)
+The documentation of linkis is in [Linkis-WebSite](https://github.com/apache/linkis-website)
 
 ## Architecture
 Linkis services could be divided into three categories: computation governance services, public enhancement services and microservice governance services.  
-- The computation governance services, support the 3 major stages of processing a task/request: submission -> preparation -> execution;  
-- The public enhancement services, including the material library service, context service, and data source service;  
+- The computation governance services, support the 3 major stages of processing a task/request: submission -> preparation -> execution.
+- The public enhancement services, including the material library service, context service, and data source service.
 - The microservice governance services, including Spring Cloud Gateway, Eureka and Open Feign.
 
 Below is the Linkis architecture diagram. You can find more detailed architecture docs in [Architecture](../architecture/overview.md).
@@ -89,7 +90,7 @@ More projects upcoming, please stay tuned.
 
 ## Contributing
 
-Contributions are always welcomed, we need more contributors to build Linkis together. either code, or doc, or other supports that could help the community.  
+Contributions are always welcomed, we need more contributors to build Linkis together. either code, or doc or other supports that could help the community.  
 For code and documentation contributions, please follow the [contribution guide](/community/how-to-contribute).
 
 ## Contact Us
@@ -103,5 +104,5 @@ Meetup videos on [Bilibili](https://space.bilibili.com/598542776?from=search&sei
 
 ## Who is Using Linkis
 
-We opened [an issue](https://github.com/apache/incubator-linkis/issues/23) for users to feedback and record who is using Linkis.  
+We opened [an issue](https://github.com/apache/linkis/issues/23) for users to feedback and record who is using Linkis.  
 Since the first release of Linkis in 2019, it has accumulated more than **700** trial companies and **1000+** sandbox trial users, which involving diverse industries, from finance, banking, tele-communication, to manufactory, internet companies and so on.

@@ -1,6 +1,6 @@
 ---
-title: openLooKeng 引擎
-sidebar_position: 8
+title: openLooKeng
+sidebar_position: 7
 ---
 
 本文主要介绍在 `Linkis` `中，openLooKeng` 引擎插件的安装、使用和配置。
@@ -19,7 +19,7 @@ mv hetu-cli-1.5.0-executable.jar hetu-cli
 chmod +x hetu-cli
 
 #  链接服务
-./hetu-cli --server 172.22.32.6:9090 --catalog tpcds --schema default
+./hetu-cli --server 127.0.0.1:9090 --catalog tpcds --schema default
 
 # 执行查询语句
 lk:default> select d_date_sk, d_date_id, d_date, d_month_seq from tpcds.sf1.date_dim order by d_date limit 5;
